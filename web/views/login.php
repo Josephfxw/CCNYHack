@@ -28,7 +28,7 @@
     <input type="text" class="form-control" id="username" placeholder="Enter username">
   </div>
   </div>
-  
+
   <div class="form-group row">
   <div class="col-md-4">
     <label for="password">Password</label>
@@ -38,9 +38,9 @@
 	<input class="btn btn-default" type="button" value="Log in" onClick="parent.location='index2.html'">
   </form>
   </div>
-	
-	
-	
+
+
+
 	<!-- jQuery -->
     <script src="js/jquery.js"></script>
 

@@ -47,7 +47,7 @@
     <input type="password" class="form-control" id="password1" placeholder="Password">
   </div>
   </div>
-  
+
   <div class="form-group row">
 
   <div class="col-md-6">
@@ -79,7 +79,7 @@
     <input type="password" class="form-control" id="password3" placeholder="Password">
   </div>
   </div>
-  
+
   <div class="form-group row">
   <div class="col-md-6">
     <input type="password" class="form-control" id="password4" placeholder="Re-enter password">
@@ -88,7 +88,7 @@
 	<input class="btn btn-default" type="submit" value="Sign up!">
     </form>
   </div>
-	
+
 	<!-- jQuery -->
     <script src="js/jquery.js"></script>
 
