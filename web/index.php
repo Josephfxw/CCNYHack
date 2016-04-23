@@ -68,6 +68,13 @@ if (count($names)>0){
   ));
 
  }
+ else {
+   $st = $app['pdo']->prepare('CREATE table test_table (id integer, name text)');
+   $st->execute();
+   $st = $app['pdo']->prepare('INSERT into test_table values (1, 'hello database')');
+   $st->execute();
+
+ }
 
 
 
