@@ -78,7 +78,7 @@ if (count($names)>0){ # table exixts
 $a=$_POST["username"];
 $b=$_POST["email"];
 $c=$_POST["password1"];
-  $st1 = $app['pdo']->prepare('INSERT into users_table ( name , email, password) values ('haha','haha','haha')');
+  $st1 = $app['pdo']->prepare("INSERT into users_table ( name , email, password) values ('haha','haha','haha')");
   $st1->execute();
 
   $st2 = $app['pdo']->prepare('SELECT name FROM users_table');
