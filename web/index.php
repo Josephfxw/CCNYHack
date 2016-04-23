@@ -66,7 +66,7 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
 
   $names = array();
   while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-    $app['monolog']->addDebug('Row ' . $row);
+    $app['monolog']->addDebug('Row ' . $row['email']);
     $names[] = $row;
   }
 
@@ -75,7 +75,7 @@ if (count($names)>0){ # table exixts
     foreach ($names as $value) {
 
     if ($value['name'] == $username){
-      
+
          return $app['twig']->render('database.twig', array(
             'names' => $names
          ));
