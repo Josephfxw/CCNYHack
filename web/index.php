@@ -50,7 +50,7 @@ $app->get('/', function() use($app) {
 $app->get('/signup.html', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('signup.html', array(
-    'warning' => "username"
+    'warning1' => "",'warning2' => "",'warning3' => "",'warning4' => "",
   ));
 });
 
@@ -82,7 +82,7 @@ if (count($names)>0){ # table exixts
     }
     else if ($value['email'] == $email){
       return $app['twig']->render('signup.html', array(
-        'warning2' =>"Email exists!", 
+        'warning2' =>"Email exists!",
       ));
     }
 
