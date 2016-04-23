@@ -71,7 +71,16 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
   }
 
   if (count($names)>0){ # table exixts
+    #foreach ($names as $name) { #loop through all the username in database
+    $warning1 = "Enter Username";
+    $warning2 = "Enter Email";
+    $warning3 = "Enter Password";
+    $warning4 = "Re-enter Password";
+      foreach ($names as $value) {
 
+    
+
+     }
      return $app['twig']->render('signup.html', array(
        'warning1' => $warning1, 'warning2' => $warning2,'warning3' => $warning3,'warning2' => $warning4
      ));
