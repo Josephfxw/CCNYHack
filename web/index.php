@@ -53,7 +53,7 @@ $app->get('/signup.html', function() use($app) {
 });
 
 $app->post('/newUserCheck.html', function() use($app) {
-  $st = $app['pdo']->prepare('SELECT name FROM test_tableb');
+  $st = $app['pdo']->prepare('SELECT name FROM test_tablebb');
   $st->execute();
 
   $names = array();
@@ -70,10 +70,10 @@ if (count($names)>0){
  }
 
  else {
-   $st = $app['pdo']->prepare('CREATE TABLE test_tableb (id integer, name text)');
+   $st = $app['pdo']->prepare('CREATE TABLE test_tablebb (id integer, name text)');
    $st->execute();
-  # $st = $app['pdo']->prepare('INSERT into test_tableb values (1, 'hello database')');
-  # $st->execute();
+   $st1 = $app['pdo']->prepare('INSERT into test_tablebb values (1, 'hello database')');
+   $st1->execute();
 
    return $app['twig']->render('signin.html');
  }
