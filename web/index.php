@@ -85,7 +85,7 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
         $warning1 = "User already exists!";
 
       if ($value['email'] == $username)
-           $warning1 = "Email already exists!";
+           $warning2 = "Email already exists!";
 
 
      }
