@@ -5,7 +5,7 @@
 
 <ul>
 {% for n in names %}
-  <li> {{ n.email }} </li>
+  <li> {{ n['email'] }} </li>
 {% else %}
   <li>Nameless!</li>
 {% endfor %}
