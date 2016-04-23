@@ -86,7 +86,7 @@ if (count($names)>0){ # table exixts
  else { # table not exixt
    $st = $app['pdo']->prepare('CREATE TABLE users_table ( name VARCHAR, email VARCHAR,password VARCHAR)');
 
-   $st1 = $app['pdo']->prepare('INSERT into users_table values ($_POST["username"],$_POST["email"]),$_POST["password1"]');
+   $st1 = $app['pdo']->prepare('INSERT INTO users_table( name , email,password) values ($_POST["username"],$_POST["email"]),$_POST["password1"]');
    $st->execute();
    $st1->execute();
    $names = array();
