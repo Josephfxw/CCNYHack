@@ -71,7 +71,7 @@ $app->post('/newUserCheck.html', function() use($app) {
 
 if (count($names)>0){ # table exixts
   #foreach ($names as $name) { #loop through all the username in database
-    foreach ($names as $value) { {
+    foreach ($names as $value) { 
 
     if ($value == "josephfan"){
       return $app['twig']->render('signup.html', array(
