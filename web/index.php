@@ -87,9 +87,7 @@ if (count($names)>0){ # table exixts
 
 }
 
-return $app['twig']->render('signup.html', array(
-  'warning1' =>"Enter Username",'warning2' => "Email Exists!",'warning3' => "Enter password",'warning4' => "Re-enter password",
-));
+
   $st1 = $app['pdo']->prepare("INSERT into users_table ( name , email, password) values ('$username','$email','$password')");
   $st1->execute();
 
@@ -124,6 +122,9 @@ $app->get('/login.html', function() use($app) {
   return $app['twig']->render('login.html');
 });
 
-
+$app->get('/test.php', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('test.php');
+});
 
 $app->run();
