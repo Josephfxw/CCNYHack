@@ -66,6 +66,10 @@ $app->post('/volunteerUserCheck', function() use($app) {
   $warning2 = "EnterEmail";
   $warning3 = "EnterPassword";
   $warning4 = "Re-enterPassword";
+  $warning5 = "Enter Username";
+  $warning6 = "Enter Email";
+  $warning7 = "Enter Password";
+  $warning8 = "Re-enter Password";
 
   $st = $app['pdo']->prepare('SELECT * FROM users_table');
   $st->execute();
@@ -165,6 +169,11 @@ $app->post('/UserForAssistanceCheck', function() use($app) {
   $email=$_POST["email2"];
   $password3=$_POST["password3"];
   $password4=$_POST["password4"];
+
+  $warning1 = "Enter Username";
+  $warning2 = "Enter Email";
+  $warning3 = "Enter Password";
+  $warning4 = "Re-enter Password";
 
   $warning5 = "Enter Username";
   $warning6 = "Enter Email";
