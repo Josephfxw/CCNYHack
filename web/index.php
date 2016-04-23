@@ -27,7 +27,7 @@ $app->register(new Herrera\Pdo\PdoServiceProvider(),
 
 //qury database
 $app->get('/db/', function() use($app) {
-  $st = $app['pdo']->prepare('SELECT name FROM test_table');
+  $st = $app['pdo']->prepare('SELECT name FROM volunteerUsers_table');
   $st->execute();
 
   $names = array();
@@ -246,7 +246,7 @@ $app->post('/UserForAssistanceCheck', function() use($app) {
          $warning5 = "Username_can't_be_empty!";
 
      if ($email = "")
-         $warning5 = "Email_can't_be_empty!";
+         $warning6 = "Email_can't_be_empty!";
 
      if ( $password3  =="")
          $warning7 ="Password_can't_be_empty!";
