@@ -62,42 +62,14 @@ $app->post('/newUserCheck.html', function() use($app) {
     $names[] = $row;
   }
 
-#if (count($names)>0){
+if (count($names)>0){
   return $app['twig']->render('database.twig', array(
     'names' => $names
   ));
 
- #} 
+ }
 
 
-'''
-  $app['monolog']->addDebug('logging output.');
-
-
-
-  $st = $app['pdo']->prepare('SELECT 1 from `test_table` LIMIT 1');
-  $st->execute();
-  if($st !== FALSE)
-{
-  return $app['twig']->render('database.twig');
-}
-else
-{
-    return $app['twig']->render('login.html');
-}
-#  $st = $app['pdo']->prepare('CREATE table test_table (id integer, name text)');
-#  $st->execute();
-
-  $names = array();
-  while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-    $app['monolog']->addDebug('Row ' . $row['name']);
-    $names[] = $row;
-  }
-
-  return $app['twig']->render('database.twig', array(
-    'names' => $names
-  ));
-'''
 });
 
 
