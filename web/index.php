@@ -84,6 +84,9 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
      if ($value['name'] == $username)
         $warning1 = "User already exists!";
 
+      if ($value['email'] == $username)
+           $warning1 = "Email already exists!";
+
 
      }
      return $app['twig']->render('signup.html', array(
