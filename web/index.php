@@ -71,9 +71,9 @@ $app->post('/newUserCheck.html', function() use($app) {
 
 if (count($names)>0){ # table exixts
   #foreach ($names as $name) { #loop through all the username in database
-    for ($x = 0; $x <=count($names); $x++) {
+    for ($x = 0; $x <count($names); $x++) {
 
-    if ($names[$x] == $_POST["username"]){
+    if ($names[$x] == $username){
       return $app['twig']->render('signup.html', array(
         'warning' => "Username exists!"
       ));

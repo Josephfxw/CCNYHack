@@ -1,23 +1,18 @@
-# php-getting-started
+# CCNYHack
 
-A barebones PHP app that makes use of the [Silex](http://silex.sensiolabs.org/) web framework, which can easily be deployed to Heroku.
+PLEASE ADD YOUR GMAIL:
+Xue Wei Fan email: Josephxwf@gmail.com
+Irina email:IrinaKalashnikova@gmail.com
+Jonathan email:j.mastermind1010@gmail.com
+Maidi email: maididai@gmail.com
+Eshawn: eshawn.karim@gmail.com
 
-This application supports the [Getting Started with PHP on Heroku](https://devcenter.heroku.com/articles/getting-started-with-php) article - check it out.
 
-## Deploying
 
-Install the [Heroku Toolbelt](https://toolbelt.heroku.com/).
+To check the database tables:
+1.open terminal
+2.cd to project repository
+3.heroku login
+4."You could run heroku pg:psql to fire up a Postgres console, then issue \d to see all tables, and \d tablename to see details for a particular table."
 
-```sh
-$ git clone git@github.com:heroku/php-getting-started.git # or clone your own fork
-$ cd php-getting-started
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
-
-## Documentation
-
-For more information about using PHP on Heroku, see these Dev Center articles:
-
-- [PHP on Heroku](https://devcenter.heroku.com/categories/php)
+You can also type select * from tablename; to view the table contents.
