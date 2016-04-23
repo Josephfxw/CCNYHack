@@ -50,8 +50,8 @@ $app->get('/', function() use($app) {
 $app->get('/signup.html', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('signup.html', array(
-    'warning1' => "Enter Usename",'warning2' => "Enter Email",'warning3' => "Enter password",'warning4' => "Re-enter password",
-    'warning5' => "Enter Usename",'warning6' => "Enter Email",'warning7' => "Enter password",'warning8' => "Re-enter password"
+    'warning1' => "EnterUsename",'warning2' => "EnterEmail",'warning3' => "EnterPassword",'warning4' => "Re-enterPassword",
+    'warning5' => "EnterUsename",'warning6' => "EnterEmail",'warning7' => "EnterPassword",'warning8' => "Re-enterPassword"
   ));
 });
 
