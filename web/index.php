@@ -59,10 +59,7 @@ $app->post('/show.html', function() use($app) {
 
 });
 
-$app->get('/signup.php', function() use($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('signup.php');
-});
+
 
 $app->get('/login.php', function() use($app) {
   $app['monolog']->addDebug('logging output.');
