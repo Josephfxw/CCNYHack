@@ -73,7 +73,7 @@ if (count($names)>0){ # table exixts
   #foreach ($names as $name) { #loop through all the username in database
     foreach ($names as $value) {
 
-    if ((string)$value == (string)$username){
+    if ($value.name == $username){
       return $app['twig']->render('signup.html', array(
         'warning' => "Username exists!"
       ));
