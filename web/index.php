@@ -95,10 +95,10 @@ $app->post('/volunteerUserCheck', function() use($app) {
         $warning2 = "Email_already_exists!";
 
      }
-     if ($username = "")
+     if ($username == "")
          $warning1 = "Username_can't_be_empty!";
 
-     if ($email = "")
+     if ($email == "")
          $warning2 = "Email_can't_be_empty!";
 
      if ( $password1  =="")
@@ -132,10 +132,10 @@ $app->post('/volunteerUserCheck', function() use($app) {
      $st2 = $app['pdo']->prepare('CREATE table volunteerUsers_table ( name VARCHAR(60), email VARCHAR(60),password VARCHAR(60))');
      $st2->execute();
 
-     if ($username = "")
+     if ($username == "")
          $warning1 = "Username_can't_be_empty!";
 
-     if ($email = "")
+     if ($email == "")
          $warning2 = "Email_can't_be_empty!";
 
      if ( $password1  =="")
@@ -204,11 +204,11 @@ $app->post('/UserForAssistanceCheck', function() use($app) {
         $warning6 = "Email_already_exists!";
 
      }
-     if ($username = "")
+     if ($username == "")
          $warning5 = "Username_can't_be_empty!";
 
-     if ($email = "")
-         $warning5 = "Email_can't_be_empty!";
+     if ($email == "")
+         $warning6 = "Email_can't_be_empty!";
 
      if ( $password3  =="")
          $warning7 ="Password_can't_be_empty!";
@@ -242,10 +242,10 @@ $app->post('/UserForAssistanceCheck', function() use($app) {
      $st2 = $app['pdo']->prepare('CREATE table UserForAssistance_table ( name VARCHAR(60), email VARCHAR(60),password VARCHAR(60))');
      $st2->execute();
 
-     if ($username = "")
+     if ($username == "")
          $warning5 = "Username_can't_be_empty!";
 
-     if ($email = "")
+     if ($email == "")
          $warning6 = "Email_can't_be_empty!";
 
      if ( $password3  =="")
