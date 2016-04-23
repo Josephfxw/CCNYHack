@@ -51,6 +51,7 @@ $app->get('/signup.html', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('signup.html');
 });
+
 $app->post('/newUserCheck.html', function() use($app) {
   $app['monolog']->addDebug('logging output.');
 
@@ -58,7 +59,7 @@ $app->post('/newUserCheck.html', function() use($app) {
 
   $st = $app['pdo']->prepare('SELECT 1 from `test_table` LIMIT 1');
   $st->execute();
-  if($val !== FALSE)
+  if($st !== FALSE)
 {
   return $app['twig']->render('database.twig');
 }
