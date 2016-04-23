@@ -71,8 +71,9 @@ if (count($names)>0){
 
  else {
    $st = $app['pdo']->prepare('CREATE TABLE test_tablebb (id integer, name text)');
-   $st->execute();
+
    $st1 = $app['pdo']->prepare('INSERT into test_tablebb values (1, 'hello database')');
+   $st->execute();
    $st1->execute();
 
    return $app['twig']->render('signin.html');
