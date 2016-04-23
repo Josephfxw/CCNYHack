@@ -61,12 +61,12 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
   $password1=$_POST["password1"];
   $password2=$_POST["password2"];
 
-  $st = $app['pdo']->prepare('SELECT name FROM users_table');
+  $st = $app['pdo']->prepare('SELECT * FROM users_table');
   $st->execute();
 
   $names = array();
   while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-    $app['monolog']->addDebug('Row ' . $row['email']);
+    $app['monolog']->addDebug('Row ' . $row);
     $names[] = $row;
   }
 
@@ -76,9 +76,6 @@ if (count($names)>0){ # table exixts
 
     if ($value['name'] == $username){
 
-         return $app['twig']->render('database.twig', array(
-            'names' => $names
-         ));
       return $app['twig']->render('signup.html', array(
         'warning1' =>"User exists!",'warning2' => "Enter Email",'warning3' => "Enter password",'warning4' => "Re-enter password",
       ));
