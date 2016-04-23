@@ -69,10 +69,10 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
     $app['monolog']->addDebug('Row ' . $row);
     $names[] = $row;
   }
-  return $app['twig']->render('show.html', array(
-    'name' => $names
-  ));
-  
+  #return $app['twig']->render('show.html', array(
+  #  'name' => $names
+  #));
+
   if (count($names)>0){ # table exixts
     #foreach ($names as $name) { #loop through all the username in database
     $warning1 = "Enter Username";
@@ -81,12 +81,10 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
     $warning4 = "Re-enter Password";
       foreach ($names as $value) {
 
-    #   if ($value['name'] == $username){
-    #     $warning1 = "User alrready exists!"
-    #    }
-      #  if ($value['email'] == $email){
-    #    $warning2 = "Email alrready exists!"
-    #  }'''
+      if ($value['name'] == $username){
+        $warning1 = "User alrready exists!"
+      }
+    
 
      }
      return $app['twig']->render('signup.html', array(
