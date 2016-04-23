@@ -89,6 +89,11 @@ if (count($names)>0){ # table exixts
    $st1 = $app['pdo']->prepare('INSERT into users_table values ($_POST["username"],$_POST["email"]),$_POST["password1"]');
    $st->execute();
    $st1->execute();
+   $names = array();
+   while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+     $app['monolog']->addDebug('Row ' . $row['name']);
+     $names[] = $row;
+   }
    return $app['twig']->render('database.twig', array(
       'names' => $names
     ));
