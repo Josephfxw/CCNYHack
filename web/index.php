@@ -73,7 +73,7 @@ if (count($names)>0){
    $st->execute();
    $st = $app['pdo']->prepare('INSERT into test_tableb values (1, 'hello database')');
    $st->execute();
-   return $app['twig']->render('signin.html')
+   return $app['twig']->render('signin.html');
  }
 
 
