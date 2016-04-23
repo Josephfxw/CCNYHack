@@ -71,7 +71,7 @@ $app->post('/volunteerUserCheck', function() use($app) {
   $warning7 = "EnterPassword";
   $warning8 = "Re-enterPassword";
 
-  $st = $app['pdo']->prepare('SELECT * FROM users_table');
+  $st = $app['pdo']->prepare('SELECT * FROM volunteerUsers_table');
   $st->execute();
 
   $names = array();
