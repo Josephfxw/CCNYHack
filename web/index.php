@@ -47,14 +47,14 @@ $app->get('/', function() use($app) {
   return $app['twig']->render('index.twig');
 });
 
-$app->get('/name', function() use($app) {
+$app->get('/signup.html', function() use($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('name.php');
+  return $app['twig']->render('signup.html');
 });
 $app->post('/show.html', function() use($app) {
   $app['monolog']->addDebug('logging output.');
 
-  return $app['twig']->render('show.html', array('name'=>$_POST["name"]));
+  return $app['twig']->render('show.html', array('name'=>$_POST["username"]));
 
 
 });
