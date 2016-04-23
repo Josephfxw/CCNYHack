@@ -81,7 +81,7 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
     $warning4 = "Re-enter Password";
       foreach ($names as $value) {
 
-     if ($value['name' == $username])
+     if ($value['name'] == $username)
         $warning1 = "User already exists!";
 
 
