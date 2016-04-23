@@ -9,7 +9,15 @@
 
 
 
-Welcome {{ name }}<br>
-Your email address is: <?php echo $_POST["email"]; ?>
+
+
+<ul>
+{% for n in name %}
+  <li> {{ n.name }} </li>
+{% else %}
+  <li>Nameless!</li>
+{% endfor %}
+</ul>
+
 
 {% endblock %}
