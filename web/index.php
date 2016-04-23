@@ -54,21 +54,21 @@ $app->get('/signup.html', function() use($app) {
 $app->post('/newUserCheck.html', function() use($app) {
   $app['monolog']->addDebug('logging output.');
 
-  return $app['twig']->render('show.html', array('name'=>$_POST["username"]));
+
 
   $st = $app['pdo']->prepare('SELECT 1 from `test_table` LIMIT 1');
   $st->execute();
   if($val !== FALSE)
 {
-   print 1;
+  return $app['twig']->render('database.twig');
 }
 else
 {
-    print 0;
+    return $app['twig']->render('login.html');
 }
 #  $st = $app['pdo']->prepare('CREATE table test_table (id integer, name text)');
 #  $st->execute();
-
+'''
   $names = array();
   while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
     $app['monolog']->addDebug('Row ' . $row['name']);
@@ -78,14 +78,14 @@ else
   return $app['twig']->render('database.twig', array(
     'names' => $names
   ));
-
+'''
 });
 
 
 
-$app->get('/login.php', function() use($app) {
+$app->get('/login.html', function() use($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('login.php');
+  return $app['twig']->render('login.html');
 });
 
 $app->run();
