@@ -62,7 +62,7 @@ $app->post('/newUserCheck.html', function() use($app) {
     $names[] = $row;
   }
 
-if ($names.length()>0)
+if (count($names)>0)
   return $app['twig']->render('database.twig', array(
     'names' => $names
   ));
