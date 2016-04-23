@@ -25,6 +25,34 @@ $app->register(new Herrera\Pdo\PdoServiceProvider(),
                )
 );
 
+//qury database
+$app->get('/db/', function() use($app) {
+  $st = $app['pdo']->prepare('SELECT name FROM test_table');
+  $st->execute();
+
+  $names = array();
+  while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+    $app['monolog']->addDebug('Row ' . $row['name']);
+    $names[] = $row;
+  }
+
+  return $app['twig']->render('database.twig', array(
+    'names' => $names
+  ));
+});
+// Our web handlers
+
+$app->get('/', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('index.twig');
+});
+
+$app->get('/signup.html', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('signup.html', array(
+    'warning1' => "Enter Usename",'warning2' => "Enter Email",'warning3' => "Enter password",'warning4' => "Re-enter password"
+  ));
+});
 
 
 
