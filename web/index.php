@@ -56,8 +56,8 @@ $app->get('/signup.html', function() use($app) {
 });
 
 # checking if the new user exists
-$app->post('/volunteerUserCheck.html', function() use($app) {
-  $username=$_POST["username"];
+$app->post('/volunteerUserCheck', function() use($app) {
+  $username=$_POST["username"]; # get username from the submit
   $email=$_POST["email"];
   $password1=$_POST["password1"];
   $password2=$_POST["password2"];
@@ -115,7 +115,7 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
 
 
 
-    $st1 = $app['pdo']->prepare("INSERT into users_table ( name , email, password) values ('$username','$email','$password1')");
+    $st1 = $app['pdo']->prepare("INSERT into volunteerUsers_table ( name , email, password) values ('$username','$email','$password1')");
     $st1->execute();
 
     return $app['twig']->render('success.html', array(
@@ -125,7 +125,7 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
    }
 
    else { # table not exixt
-     $st2 = $app['pdo']->prepare('CREATE table users_table ( name VARCHAR(60), email VARCHAR(60),password VARCHAR(60))');
+     $st2 = $app['pdo']->prepare('CREATE table volunteerUsers_table ( name VARCHAR(60), email VARCHAR(60),password VARCHAR(60))');
      $st2->execute();
 
      if ($username = "")
@@ -147,7 +147,7 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
         ));
 
 
-     $st3 = $app['pdo']->prepare("INSERT into users_table ( name , email, password) values ('$username','$email','$password1')");
+     $st3 = $app['pdo']->prepare("INSERT into volunteerUsers_table ( name , email, password) values ('$username','$email','$password1')");
      $st3->execute();
      return $app['twig']->render('success.html', array(
        'name' => $username, 'names' => $names
@@ -160,7 +160,7 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
 
 
 # checking if the asststance user exists
-$app->post('/volunteerUserCheck.html', function() use($app) {
+$app->post('/UserForAssistanceCheck', function() use($app) {
   $username=$_POST["username2"];
   $email=$_POST["email2"];
   $password3=$_POST["password3"];
