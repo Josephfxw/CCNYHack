@@ -51,10 +51,10 @@ $app->get('/name', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('name.php');
 });
-$app->post('/show.php', function() use($app) {
+$app->post('/show.html', function() use($app) {
   $app['monolog']->addDebug('logging output.');
 
-  return $app['twig']->render('show.php', array('name'=>$_POST["name"]));
+  return $app['twig']->render('show.html', array('name'=>$_POST["name"]));
 
 
 });
