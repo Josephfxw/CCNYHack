@@ -105,7 +105,7 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
 
 
 
-    $st1 = $app['pdo']->prepare("INSERT into users_table ( name , email, password) values ('$username','$email','$password')");
+    $st1 = $app['pdo']->prepare("INSERT into users_table ( name , email, password) values ('$username','$email','$password1')");
     $st1->execute();
 
     return $app['twig']->render('success.html', array(
@@ -115,10 +115,9 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
    }
 
    else { # table not exixt
-     $st2 = $app['pdo']->prepare('CREATE table users_table ( name VARCHAR(30), email VARCHAR(20),password VARCHAR(20))');
+     $st2 = $app['pdo']->prepare('CREATE table users_table ( name VARCHAR(60), email VARCHAR(60),password VARCHAR(60))');
      $st2->execute();
-     $st3 = $app['pdo']->prepare("INSERT into users_table ( name , email, password) values ('$username','$email','$password')");
-     $st3->execute();
+
 
      if ( $password1 !=   $password2){
 
@@ -127,6 +126,93 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
       'warning1' => $warning1, 'warning2' => $warning2,'warning3' => $warning3,'warning4' => $warning4
     ));
      }
+     $st3 = $app['pdo']->prepare("INSERT into users_table ( name , email, password) values ('$username','$email','$password1')");
+     $st3->execute();
+     return $app['twig']->render('success.html', array(
+       'name' => $username, 'names' => $names
+     ));
+   }
+
+
+});
+
+
+
+# checking if the asststance user exists
+$app->post('/volunteerUserCheck.html', function() use($app) {
+  $username=$_POST["username2"];
+  $email=$_POST["email2"];
+  $password3=$_POST["password3"];
+  $password4=$_POST["password4"];
+
+  $warning5 = "Enter Username";
+  $warning6 = "Enter Email";
+  $warning7 = "Enter Password";
+  $warning8 = "Re-enter Password";
+
+  $st = $app['pdo']->prepare('SELECT * FROM UserForAssistance_table');
+  $st->execute();
+
+  $names = array();
+  while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+    $app['monolog']->addDebug('Row ' . $row);
+    $names[] = $row;
+  }
+  #return $app['twig']->render('show.html', array(
+  #  'name' => $names
+  #));
+
+  if (count($names)>0){ # table exixts
+    #foreach ($names as $name) { #loop through all the username in database
+
+      foreach ($names as $value) {
+
+     if ($value['name'] == $username)
+        $warning5 = "User already exists!";
+
+     if ($value['email'] == $email)
+        $warning6 = "Email already exists!";
+
+     }
+
+     if ( $password3 !=   $password4){
+
+       $warning8 = "Password doesn't match!";
+     }
+
+
+    if ($warning5 != "Enter Username" || $warning6 != "Enter Email" || $warning8 = "Re-enter Password")
+        return $app['twig']->render('signup.html', array(
+       'warning5' => $warning5, 'warning6' => $warning6,'warning7' => $warning7,'warning8' => $warning8
+     ));
+
+
+
+
+    $st1 = $app['pdo']->prepare("INSERT into UserForAssistance_table ( name , email, password) values ('$username','$email','$password3')");
+    $st1->execute();
+
+    return $app['twig']->render('success.html', array(
+      'name' => $username, 'names' => $names
+    ));
+
+   }
+
+   else { # table not exixt
+     $st2 = $app['pdo']->prepare('CREATE table UserForAssistance_table ( name VARCHAR(60), email VARCHAR(60),password VARCHAR(60))');
+     $st2->execute();
+
+
+     if ( $password3 !=   $password4){
+
+       $warning8 = "Password doesn't match!";
+       return $app['twig']->render('signup.html', array(
+      'warning5' => $warning6, 'warning6' => $warning6,'warning7' => $warning7,'warning8' => $warning8
+    ));
+     }
+
+     $st3 = $app['pdo']->prepare("INSERT into UserForAssistance_table ( name , email, password) values ('$username','$email','$password3')");
+     $st3->execute();
 
      return $app['twig']->render('success.html', array(
        'name' => $username, 'names' => $names
