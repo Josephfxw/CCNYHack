@@ -74,9 +74,9 @@ if (count($names)>0){ # table exixts
     foreach ($names as $value) {
 
     if ($value['name'] == $username){
-      $temp = "exists!";
+
       return $app['twig']->render('signup.html', array(
-        'warning' =>$temp
+        'warning' =>"User exists!"
       ));
     }
 }
