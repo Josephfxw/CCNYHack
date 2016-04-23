@@ -81,12 +81,12 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
     $warning4 = "Re-enter Password";
       foreach ($names as $value) {
 
-      
+
 
 
      }
      return $app['twig']->render('signup.html', array(
-       'warning1' => $warning1, 'warning2' => $warning2,'warning3' => $warning3,'warning2' => $warning4
+       'warning1' => $warning1, 'warning2' => $warning2,'warning3' => $warning3,'warning4' => $warning4
      ));
 
 
