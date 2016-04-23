@@ -50,7 +50,7 @@ $app->get('/', function() use($app) {
 $app->get('/signup.html', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('signup.html', array(
-    'warning1' => "",'warning2' => "",'warning3' => "",'warning4' => "",
+    'warning1' => "Enter Usename",'warning2' => "Enter Email",'warning3' => "Enter password",'warning4' => "Re-enter password"
   ));
 });
 
@@ -77,12 +77,12 @@ if (count($names)>0){ # table exixts
     if ($value['name'] == $username){
 
       return $app['twig']->render('signup.html', array(
-        'warning1' =>"User exists!"
+        'warning1' =>"User exists!",'warning2' => "Enter Email",'warning3' => "Enter password",'warning4' => "Re-enter password",
       ));
     }
     else if ($value['email'] == $email){
       return $app['twig']->render('signup.html', array(
-        'warning2' =>"Email exists!",
+        'warning1' =>"Enter Username",'warning2' => "Email Exists!",'warning3' => "Enter password",'warning4' => "Re-enter password",
       ));
     }
 
