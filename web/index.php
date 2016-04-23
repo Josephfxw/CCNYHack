@@ -24,7 +24,7 @@ $app->get('/', function() use($app) {
 
 $app->get('/signup.php', function() use($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('signup.php);
+  return $app['twig']->render('signup.php');
 });
 
 $app->run();
