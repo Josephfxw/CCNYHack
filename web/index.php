@@ -69,9 +69,7 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
     $app['monolog']->addDebug('Row ' . $row);
     $names[] = $row;
   }
-  return $app['twig']->render('show.html', array(
-    'name' => $names
-  ));
+  
   if (count($names)>0){ # table exixts
     #foreach ($names as $name) { #loop through all the username in database
     $warning1 = "Enter Username";
