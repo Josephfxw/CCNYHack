@@ -52,8 +52,9 @@ $app->get('/signup.html', function() use($app) {
   return $app['twig']->render('signup.html');
 });
 
+# checking if the new user exists
 $app->post('/newUserCheck.html', function() use($app) {
-  $st = $app['pdo']->prepare('SELECT name FROM test_tablebb');
+  $st = $app['pdo']->prepare('SELECT name FROM users_table');
   $st->execute();
 
   $names = array();
@@ -62,21 +63,25 @@ $app->post('/newUserCheck.html', function() use($app) {
     $names[] = $row;
   }
 
-if (count($names)>0){
-  return $app['twig']->render('database.twig', array(
-    'names' => $names
+if (count($names)>0){ # table exixts
+  $st1 = $app['pdo']->prepare('INSERT into users_table values ($_POST["username"],$_POST["email"]),$_POST["password1"]');
+  $st1->execute();
+  return $app['twig']->render('success.html', array(
+    'name' => $_POST["username"]
   ));
 
  }
 
- else {
-   $st = $app['pdo']->prepare('CREATE TABLE test_tablebb (id integer, name text)');
+ else { # table not exixt
+   $st = $app['pdo']->prepare('CREATE TABLE users_table ( name VARCHAR, email VARCHAR,password VARCHAR)');
 
-   $st1 = $app['pdo']->prepare('INSERT into test_tablebb values (1, "hello database")');
+   $st1 = $app['pdo']->prepare('INSERT into users_table values ($_POST["username"],$_POST["email"]),$_POST["password1"]');
    $st->execute();
    $st1->execute();
 
-   return $app['twig']->render('signin.html');
+   return $app['twig']->render('success.html', array(
+     'name' => $_POST["username"]
+   ));
  }
 
 
