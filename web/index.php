@@ -49,7 +49,9 @@ $app->get('/', function() use($app) {
 
 $app->get('/signup.html', function() use($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('signup.html');
+  return $app['twig']->render('signup.html', array(
+    'warning' => "username"
+  ));
 });
 
 # checking if the new user exists
