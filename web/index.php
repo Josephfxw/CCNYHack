@@ -51,6 +51,10 @@ $app->get('/name', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('name.php');
 });
+$app->get('/show.php', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('show.php');
+});
 
 $app->get('/signup.php', function() use($app) {
   $app['monolog']->addDebug('logging output.');
