@@ -84,10 +84,10 @@ if (count($names)>0){ # table exixts
  }
 
  else { # table not exixt
-   $st = $app['pdo']->prepare('CREATE TABLE users_table ( name VARCHAR, email VARCHAR,password VARCHAR)');
+   #$st = $app['pdo']->prepare('CREATE TABLE users_table ( name VARCHAR, email VARCHAR,password VARCHAR)');
 
    $st1 = $app['pdo']->prepare('INSERT INTO users_table( name , email,password) values ($_POST["username"],$_POST["email"]),$_POST["password1"]');
-   $st->execute();
+   #$st->execute();
    $st1->execute();
 
    $st2 = $app['pdo']->prepare('SELECT name FROM users_table');
