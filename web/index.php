@@ -53,7 +53,10 @@ $app->get('/name', function() use($app) {
 });
 $app->post('/show.php', function() use($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('show.php');
+
+  return $app['twig']->render('show.php', array('name'=>$_POST["name"]));
+
+
 });
 
 $app->get('/signup.php', function() use($app) {

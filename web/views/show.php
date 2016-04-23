@@ -1,8 +1,15 @@
-<html>
-<body>
 
-Welcome <?php echo $_POST["name"]; ?><br>
+
+
+{% extends "layout.html" %}
+
+{% block content %}
+<p>Got these rows from the database:</p>
+
+
+
+
+Welcome {{ name }}<br>
 Your email address is: <?php echo $_POST["email"]; ?>
 
-</body>
-</html>
+{% endblock %}
