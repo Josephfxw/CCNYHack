@@ -64,6 +64,13 @@ $app->post('/newUserCheck.html', function() use($app) {
   }
 
 if (count($names)>0){ # table exixts
+  foreach ($names as $name) { #loop through all the username in database
+    if ($name == $_POST["username"]){
+      return $app['twig']->render('signup.html', array(
+        'warning' => "Username exists!"
+      ));
+    }
+}
   $st1 = $app['pdo']->prepare('INSERT into users_table values ($_POST["username"],$_POST["email"]),$_POST["password1"]');
   $st1->execute();
   return $app['twig']->render('success.html', array(
