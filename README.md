@@ -16,3 +16,6 @@ To check the database tables:
 4."You could run heroku pg:psql to fire up a Postgres console, then issue \d to see all tables, and \d tablename to see details for a particular table."
 
 You can also type select * from tablename; to view the table contents.
+
+delete a table:
+DROP TABLE UserForAssistance_table

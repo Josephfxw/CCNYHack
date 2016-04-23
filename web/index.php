@@ -66,10 +66,10 @@ $app->post('/volunteerUserCheck', function() use($app) {
   $warning2 = "EnterEmail";
   $warning3 = "EnterPassword";
   $warning4 = "Re-enterPassword";
-  $warning5 = "Enter Username";
-  $warning6 = "Enter Email";
-  $warning7 = "Enter Password";
-  $warning8 = "Re-enter Password";
+  $warning5 = "EnterUsername";
+  $warning6 = "EnterEmail";
+  $warning7 = "EnterPassword";
+  $warning8 = "Re-enterPassword";
 
   $st = $app['pdo']->prepare('SELECT * FROM users_table');
   $st->execute();
@@ -133,15 +133,15 @@ $app->post('/volunteerUserCheck', function() use($app) {
      $st2->execute();
 
      if ($username = "")
-         $warning5 = "Username_can't_be_empty!";
+         $warning1 = "Username_can't_be_empty!";
 
      if ($email = "")
-         $warning5 = "Email_can't_be_empty!";
+         $warning2 = "Email_can't_be_empty!";
 
-     if ( $password3  =="")
-         $warning7 ="Password_can't_be_empty!";
+     if ( $password1  =="")
+         $warning3 ="Password_can't_be_empty!";
 
-     if ( $password1 !=   $password2)
+     if ( $password !=   $password2)
        $warning4 = "Password_doesn't_match!";
 
      if ($warning1 != "EnterUsername" || $warning2 != "EnterEmail" ||$warning3 != "EnterPassword" || $warning4 = "Re-enterPassword")
@@ -198,10 +198,10 @@ $app->post('/UserForAssistanceCheck', function() use($app) {
       foreach ($names as $value) {
 
      if ($value['name'] == $username)
-        $warning5 = "User already exists!";
+        $warning5 = "User_already_exists!";
 
      if ($value['email'] == $email)
-        $warning6 = "Email already exists!";
+        $warning6 = "Email_already_exists!";
 
      }
      if ($username = "")
