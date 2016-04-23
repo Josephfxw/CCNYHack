@@ -71,29 +71,34 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
   }
 
   if (count($names)>0){ # table exixts
-    #foreach ($names as $name) { #loop through all the username in database
-    $warning1 = "Enter Username";
-    $warning2 = "Enter Email";
-    $warning3 = "Enter Password";
-    $warning4 = "Re-enter Password";
-      foreach ($names as $value) {
 
-      if ($value['name'] == $username){
-       $warning1 = "User alrready exists!"
-      }
-      if ($value['email'] == $email){
-      $warning2 = "Email alrready exists!"
-      }
-
-     }
      return $app['twig']->render('signup.html', array(
        'warning1' => $warning1, 'warning2' => $warning2,'warning3' => $warning3,'warning2' => $warning4
      ));
 
-}
 
 
 
+    $st1 = $app['pdo']->prepare("INSERT into users_table ( name , email, password) values ('$username','$email','$password')");
+    $st1->execute();
+
+    return $app['twig']->render('success.html', array(
+      'name' => $username, 'names' => $names
+    ));
+
+   }
+
+   else { # table not exixt
+     $st2 = $app['pdo']->prepare('CREATE table users_table ( name VARCHAR(30), email VARCHAR(20),password VARCHAR(20))');
+     $st2->execute();
+     $st3 = $app['pdo']->prepare("INSERT into users_table ( name , email, password) values ('$username','$email','$password')");
+     $st3->execute();
+
+
+     return $app['twig']->render('success.html', array(
+       'name' => $username, 'names' => $names
+     ));
+   }
 
 
 });
