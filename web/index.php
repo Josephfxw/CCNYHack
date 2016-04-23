@@ -68,13 +68,6 @@ if (count($names)>0){
   ));
 
  }
- else {
-   $st = $app['pdo']->prepare('CREATE table test_tableb (id integer, name text)');
-   $st->execute();
-   $st = $app['pdo']->prepare('INSERT into test_tableb values (1, 'hello database')');
-   $st->execute();
-   return $app['twig']->render('signin.html');
- }
 
 
 
