@@ -170,15 +170,15 @@ $app->post('/UserForAssistanceCheck', function() use($app) {
   $password3=$_POST["password3"];
   $password4=$_POST["password4"];
 
-  $warning1 = "Enter Username";
-  $warning2 = "Enter Email";
-  $warning3 = "Enter Password";
-  $warning4 = "Re-enter Password";
+  $warning1 = "EnterUsername";
+  $warning2 = "EnterEmail";
+  $warning3 = "EnterPassword";
+  $warning4 = "Re-enterPassword";
 
-  $warning5 = "Enter Username";
-  $warning6 = "Enter Email";
-  $warning7 = "Enter Password";
-  $warning8 = "Re-enter Password";
+  $warning5 = "EnterUsername";
+  $warning6 = "EnterEmail";
+  $warning7 = "EnterPassword";
+  $warning8 = "Re-enterPassword";
 
   $st = $app['pdo']->prepare('SELECT * FROM UserForAssistance_table');
   $st->execute();
@@ -205,18 +205,18 @@ $app->post('/UserForAssistanceCheck', function() use($app) {
 
      }
      if ($username = "")
-         $warning5 = "Username can't be empty!";
+         $warning5 = "Username_can't_be_empty!";
 
      if ($email = "")
-         $warning5 = "Email can't be empty!";
+         $warning5 = "Email_can't_be_empty!";
 
      if ( $password3  =="")
-         $warning7 ="Password can't be empty!";
+         $warning7 ="Password_can't_be_empty!";
 
 
      if ( $password3 !=   $password4){
 
-       $warning8 = "Password doesn't match!";
+       $warning8 = "Password_doesn't_match!";
      }
 
 
@@ -243,23 +243,23 @@ $app->post('/UserForAssistanceCheck', function() use($app) {
      $st2->execute();
 
      if ($username = "")
-         $warning5 = "Username can't be empty!";
+         $warning5 = "Username_can't_be_empty!";
 
      if ($email = "")
-         $warning5 = "Email can't be empty!";
+         $warning5 = "Email_can't_be_empty!";
 
      if ( $password3  =="")
-         $warning7 ="Password can't be empty!";
+         $warning7 ="Password_can't_be_empty!";
 
 
      if ( $password3 !=   $password4)
-       $warning8 = "Password doesn't match!";
+       $warning8 = "Password_doesn't_match!";
 
 
 
-     if ($warning5 != "Enter Username" || $warning6 != "Enter Email" || $warning7 !="Enter Password"|| $warning8 = "Re-enter Password")
+     if ($warning5 != "EnterUsername" || $warning6 != "EnterEmail" || $warning7 !="EnterPassword"|| $warning8 = "Re-enterPassword")
          return $app['twig']->render('signup.html', array(
-         'warning1' => "Enter Usename",'warning2' => "Enter Email",'warning3' => "Enter password",'warning4' => "Re-enter password",
+         'warning1' => "EnterUsename",'warning2' => "EnterEmail",'warning3' => "EnterPassword",'warning4' => "Re-enterPassword",
         'warning5' => $warning5, 'warning6' => $warning6,'warning7' => $warning7,'warning8' => $warning8
       ));
 
