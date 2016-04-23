@@ -78,7 +78,12 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
     $warning4 = "Re-enter Password";
       foreach ($names as $value) {
 
-    
+        if ($value['name'] == $username){
+         $warning1 = "User alrready exists!"
+        }
+        if ($value['email'] == $email){
+        $warning2 = "Email alrready exists!"
+        }
 
      }
      return $app['twig']->render('signup.html', array(
