@@ -64,9 +64,7 @@ $app->post('/newUserCheck.html', function() use($app) {
     $app['monolog']->addDebug('Row ' . $row['name']);
     $names[] = $row;
   }
-  return $app['twig']->render('database.twig', array(
-     'names' => $names
-   ));
+
 if (count($names)>0){ # table exixts
   #foreach ($names as $name) { #loop through all the username in database
     for ($x = 0; $x <=count($names); $x++) {
@@ -91,6 +89,9 @@ if (count($names)>0){ # table exixts
    $st1 = $app['pdo']->prepare('INSERT into users_table values ($_POST["username"],$_POST["email"]),$_POST["password1"]');
    $st->execute();
    $st1->execute();
+   return $app['twig']->render('database.twig', array(
+      'names' => $names
+    ));
 
    return $app['twig']->render('success.html', array(
      'name' => $_POST["username"]
