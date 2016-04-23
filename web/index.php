@@ -61,6 +61,11 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
   $password1=$_POST["password1"];
   $password2=$_POST["password2"];
 
+  $warning1 = "Enter Username";
+  $warning2 = "Enter Email";
+  $warning3 = "Enter Password";
+  $warning4 = "Re-enter Password";
+
   $st = $app['pdo']->prepare('SELECT * FROM users_table');
   $st->execute();
 
@@ -75,21 +80,25 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
 
   if (count($names)>0){ # table exixts
     #foreach ($names as $name) { #loop through all the username in database
-    $warning1 = "Enter Username";
-    $warning2 = "Enter Email";
-    $warning3 = "Enter Password";
-    $warning4 = "Re-enter Password";
+
       foreach ($names as $value) {
 
      if ($value['name'] == $username)
         $warning1 = "User already exists!";
 
-      if ($value['email'] == $email)
-           $warning2 = "Email already exists!";
-
+     if ($value['email'] == $email)
+        $warning2 = "Email already exists!";
 
      }
-     return $app['twig']->render('signup.html', array(
+
+     if ( $password1 !=   $password2){
+
+       $warning4 = "Password doesn't match!";
+     }
+
+
+    if ($warning1 != "Enter Username" || $warning2 != "Enter Email" || $warning4 = "Re-enter Password")
+        return $app['twig']->render('signup.html', array(
        'warning1' => $warning1, 'warning2' => $warning2,'warning3' => $warning3,'warning4' => $warning4
      ));
 
@@ -111,6 +120,13 @@ $app->post('/volunteerUserCheck.html', function() use($app) {
      $st3 = $app['pdo']->prepare("INSERT into users_table ( name , email, password) values ('$username','$email','$password')");
      $st3->execute();
 
+     if ( $password1 !=   $password2){
+
+       $warning4 = "Password doesn't match!";
+       return $app['twig']->render('signup.html', array(
+      'warning1' => $warning1, 'warning2' => $warning2,'warning3' => $warning3,'warning4' => $warning4
+    ));
+     }
 
      return $app['twig']->render('success.html', array(
        'name' => $username, 'names' => $names
