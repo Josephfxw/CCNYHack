@@ -89,8 +89,11 @@ if (count($names)>0){ # table exixts
    $st1 = $app['pdo']->prepare('INSERT INTO users_table( name , email,password) values ($_POST["username"],$_POST["email"]),$_POST["password1"]');
    $st->execute();
    $st1->execute();
+
+   $st2 = $app['pdo']->prepare('SELECT name FROM users_table');
+   $st2->execute();
    $names = array();
-   while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+   while ($row = $st2->fetch(PDO::FETCH_ASSOC)) {
      $app['monolog']->addDebug('Row ' . $row['name']);
      $names[] = $row;
    }
