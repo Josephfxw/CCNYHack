@@ -50,11 +50,11 @@ $app->get('/', function() use($app) {
 $app->get('/signup.html', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('signup.html', array(
-    'warning1' => "EnterUsename",'warning2' => "EnterEmail",'warning3' => "EnterPassword",'warning4' => "Re-enterPassword",
+    'warning1' => "EnterUsername",'warning2' => "EnterEmail",'warning3' => "EnterPassword",'warning4' => "Re-enterPassword",
     'warning5' => "EnterUsename",'warning6' => "EnterEmail",'warning7' => "EnterPassword",'warning8' => "Re-enterPassword"
   ));
 });
-
+###################################################################################################
 # checking if the new user exists
 $app->post('/volunteerUserCheck', function() use($app) {
   $username=$_POST["username"]; # get username from the submit
@@ -110,10 +110,10 @@ $app->post('/volunteerUserCheck', function() use($app) {
 
 
 
-    if ($warning1 != "EnterUsername" || $warning2 != "EnterEmail" ||$warning3 != "EnterPassword" || $warning4 = "Re-enterPassword")
+    if ($warning1 != "EnterUsername" || $warning2 != "EnterEmail" ||$warning3 != "EnterPassword" || $warning4 != "Re-enterPassword")
         return $app['twig']->render('signup.html', array(
        'warning1' => $warning1, 'warning2' => $warning2,'warning3' => $warning3,'warning4' => $warning4,
-       'warning5' => "EnterUsename",'warning6' => "EnterEmail",'warning7' => "Enterpassword",'warning8' => "Re-enterpassword"
+       'warning5' => "EnterUsername",'warning6' => "EnterEmail",'warning7' => "EnterPassword",'warning8' => "Re-enterPassword"
      ));
 
 
@@ -147,7 +147,7 @@ $app->post('/volunteerUserCheck', function() use($app) {
      if ($warning1 != "EnterUsername" || $warning2 != "EnterEmail" ||$warning3 != "EnterPassword" || $warning4 = "Re-enterPassword")
            return $app['twig']->render('signup.html', array(
           'warning1' => $warning1, 'warning2' => $warning2,'warning3' => $warning3,'warning4' => $warning4,
-          'warning5' => "EnterUsename",'warning6' => "EnterEmail",'warning7' => "Enterpassword",'warning8' => "Re-enterPassword"
+          'warning5' => "EnterUsername",'warning6' => "EnterEmail",'warning7' => "Enterpassword",'warning8' => "Re-enterPassword"
         ));
 
 
@@ -161,7 +161,7 @@ $app->post('/volunteerUserCheck', function() use($app) {
 
 });
 
-
+#####################################################################################################
 
 # checking if the asststance user exists
 $app->post('/UserForAssistanceCheck', function() use($app) {
@@ -222,7 +222,7 @@ $app->post('/UserForAssistanceCheck', function() use($app) {
 
     if ($warning5 != "EnterUsername" || $warning6 != "EnterEmail" || $warning7 !="EnterPassword"|| $warning8 = "Re-enterPassword")
         return $app['twig']->render('signup.html', array(
-        'warning1' => "EnterUsename",'warning2' => "EnterEmail",'warning3' => "EnterPassword",'warning4' => "Re-enterPassword",
+        'warning1' => "EnterUsername",'warning2' => "EnterEmail",'warning3' => "EnterPassword",'warning4' => "Re-enterPassword",
        'warning5' => $warning5, 'warning6' => $warning6,'warning7' => $warning7,'warning8' => $warning8
      ));
 
@@ -259,7 +259,7 @@ $app->post('/UserForAssistanceCheck', function() use($app) {
 
      if ($warning5 != "EnterUsername" || $warning6 != "EnterEmail" || $warning7 !="EnterPassword"|| $warning8 = "Re-enterPassword")
          return $app['twig']->render('signup.html', array(
-         'warning1' => "EnterUsename",'warning2' => "EnterEmail",'warning3' => "EnterPassword",'warning4' => "Re-enterPassword",
+         'warning1' => "EnterUsername",'warning2' => "EnterEmail",'warning3' => "EnterPassword",'warning4' => "Re-enterPassword",
         'warning5' => $warning5, 'warning6' => $warning6,'warning7' => $warning7,'warning8' => $warning8
       ));
 
@@ -284,6 +284,52 @@ $app->get('/login.html', function() use($app) {
 $app->get('/test.php', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('test.php');
+});
+
+$app->post('/volunteerLoginCheck', function() use($app) {
+  $warning1 = "EnterUsername";
+  $warning2 = "EnterPassword";
+  $warning3 = "EnterUsername";
+  $warning4 = "EnterPassword";
+
+  $username=$_POST["username"];
+  $password=$_POST["password"];
+  $st = $app['pdo']->prepare('SELECT * FROM volunteerUsers_table');
+  $st->execute();
+
+  $names = array();
+  while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+    $app['monolog']->addDebug('Row ' . $row);
+    $names[] = $row;
+  }
+
+  #if (count($names)>0){ # table exixts
+    #foreach ($names as $name) { #loop through all the username in database
+
+      foreach ($names as $value) {
+
+     if ($value['name'] != $username)
+       $warning1 = "Username_is_incorrect!";
+
+     if($value['password'] != $password)
+       $warning2 = "Password_is_incorrect!";
+      }
+
+     if ($username == "")
+         $warning1 = "Username_can't_be_empty!";
+
+     if ($password == "")
+         $warning2 = "Password_can't_be_empty!";
+
+     if ($warning1 != "EnterUsername" || $warning2 != "EnterPassword" )
+             return $app['twig']->render('login.html', array(
+             'warning1' => $warning1, 'warning2' => $warning2
+             #,'warning3' => "EnterUsername",'warning4' => "EnterPassword"
+
+          ));
+
+      return $app['twig']->render('user.html');
+
 });
 
 $app->run();
