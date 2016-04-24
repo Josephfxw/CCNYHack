@@ -287,10 +287,9 @@ $app->get('/login.html', function() use($app) {
 ##################################################################################
 
 $app->post('/volunteerLoginCheck', function() use($app) {
-  $warning1 = "EnterUsername";
-  $warning2 = "EnterPassword";
-  $warning3 = "EnterUsername";
-  $warning4 = "EnterPassword";
+  $warning1 = "UsernameIncorrect";
+  $warning2 = "PasswordIncorrect";
+
 
   $username=$_POST["username"];
   $password=$_POST["password"];
@@ -306,39 +305,42 @@ $app->post('/volunteerLoginCheck', function() use($app) {
   #if (count($names)>0){ # table exixts
     #foreach ($names as $name) { #loop through all the username in database
 
-      foreach ($names as $value) {
 
-     if ($value['name'] != $username)
-       $warning1 = "Username_is_incorrect!";
+          foreach ($names as $value) {
 
-     if($value['password'] != $password)
-       $warning2 = "Password_is_incorrect!";
-      }
+         if ($value['name'] == $username)
+             $warning1 = "UsernameCorrect";
+         if ($value['password'] == $password )
+             $warning2 = "PasswordCorrect";
 
-     if ($username == "")
-         $warning1 = "Username_can't_be_empty!";
+          }
 
-     if ($password == "")
-         $warning2 = "Password_can't_be_empty!";
+         if ($username == "")
+             $warning1 = "Username_can't_be_empty!";
 
-     if ($warning1 != "EnterUsername" || $warning2 != "EnterPassword" )
-             return $app['twig']->render('login.html', array(
-             'warning1' => $warning1, 'warning2' => $warning2,
-             'warning3' => "EnterUsername", 'warning4' =>"EnterPassword"
-             #,'warning3' => "EnterUsername",'warning4' => "EnterPassword"
+         if ($password == "")
+             $warning2 = "Password_can't_be_empty!";
 
-          ));
+         if ($warning1 == "UsernameCorrect" && $warning2 == "PasswordCorrect" )
+             return $app['twig']->render('user.html');
 
-      return $app['twig']->render('user.html');
+
+         return $app['twig']->render('login.html', array(
+
+                 'warning1' => $warning1, 'warning2' => $warning2,
+                 'warning3' => "EnterUsername", 'warning4' =>"EnterPassword"
+
+                 #,'warning3' => "EnterUsername",'warning4' => "EnterPassword"
+
+              ));
 
 });
 
 ######################################################################################
 $app->post('/helpSeekerLoginCheck', function() use($app) {
-  $warning1 = "EnterUsername";
-  $warning2 = "EnterPassword";
-  $warning3 = "EnterUsername";
-  $warning4 = "EnterPassword";
+
+  $warning3 = "UsernameIncorrect";
+  $warning4 = "PasswordIncorrect";
 
   $username=$_POST["username2"];
   $password=$_POST["password2"];
@@ -356,11 +358,11 @@ $app->post('/helpSeekerLoginCheck', function() use($app) {
 
       foreach ($names as $value) {
 
-     if ($value['name'] != $username)
-       $warning3 = "Username_is_incorrect!";
+     if ($value['name'] == $username)
+         $warning3 = "UsernameCorrect";
+     if ($value['password'] == $password )
+         $warning4 = "PasswordCorrect";
 
-     if($value['password'] != $password)
-       $warning4 = "Password_is_incorrect!";
       }
 
      if ($username == "")
@@ -369,8 +371,11 @@ $app->post('/helpSeekerLoginCheck', function() use($app) {
      if ($password == "")
          $warning4 = "Password_can't_be_empty!";
 
-     if ($warning3 != "EnterUsername" || $warning4 != "EnterPassword" )
-             return $app['twig']->render('login.html', array(
+     if ($warning3 == "UsernameCorrect" && $warning4 == "PasswordCorrect" )
+         return $app['twig']->render('user.html');
+
+
+     return $app['twig']->render('login.html', array(
              'warning1' => "EnterUsername", 'warning2' =>"EnterPassword",
              'warning3' => $warning3, 'warning4' => $warning4
 
@@ -378,7 +383,7 @@ $app->post('/helpSeekerLoginCheck', function() use($app) {
 
           ));
 
-      return $app['twig']->render('user.html');
+
 
 });
 
