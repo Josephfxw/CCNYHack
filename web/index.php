@@ -285,9 +285,9 @@ $app->get('/login.html', function() use($app) {
 });
 ##################################################################################
 
-$app->get('/posting.html', function() use($app) {
+$app->get('/postings.html', function() use($app) {
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('posting.html'
+  return $app['twig']->render('postings.html'
 
 );
 });
