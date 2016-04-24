@@ -275,17 +275,14 @@ $app->post('/UserForAssistanceCheck', function() use($app) {
 });
 
 
-
+##################################################################################
 $app->get('/login.html', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('login.html', array(
   'warning1' => "EnterUsername", 'warning2' => "EnterPassword"));
 });
 
-$app->get('/test.php', function() use($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('test.php');
-});
+##################################################################################
 
 $app->post('/volunteerLoginCheck', function() use($app) {
   $warning1 = "EnterUsername";
@@ -324,7 +321,8 @@ $app->post('/volunteerLoginCheck', function() use($app) {
 
      if ($warning1 != "EnterUsername" || $warning2 != "EnterPassword" )
              return $app['twig']->render('login.html', array(
-             'warning1' => $warning1, 'warning2' => $warning2
+             'warning1' => $warning1, 'warning2' => $warning2,
+             'warning3' => "EnterUsername", 'warning4' =>"EnterPassword"
              #,'warning3' => "EnterUsername",'warning4' => "EnterPassword"
 
           ));
@@ -332,5 +330,55 @@ $app->post('/volunteerLoginCheck', function() use($app) {
       return $app['twig']->render('user.html');
 
 });
+
+######################################################################################
+$app->post('/helpSeekerLoginCheck', function() use($app) {
+  $warning1 = "EnterUsername";
+  $warning2 = "EnterPassword";
+  $warning3 = "EnterUsername";
+  $warning4 = "EnterPassword";
+
+  $username=$_POST["username2"];
+  $password=$_POST["password2"];
+  $st = $app['pdo']->prepare('SELECT * FROM UserForAssistance_table');
+  $st->execute();
+
+  $names = array();
+  while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+    $app['monolog']->addDebug('Row ' . $row);
+    $names[] = $row;
+  }
+
+  #if (count($names)>0){ # table exixts
+    #foreach ($names as $name) { #loop through all the username in database
+
+      foreach ($names as $value) {
+
+     if ($value['name'] != $username)
+       $warning3 = "Username_is_incorrect!";
+
+     if($value['password'] != $password)
+       $warning4 = "Password_is_incorrect!";
+      }
+
+     if ($username == "")
+         $warning3 = "Username_can't_be_empty!";
+
+     if ($password == "")
+         $warning4 = "Password_can't_be_empty!";
+
+     if ($warning3 != "EnterUsername" || $warning4 != "EnterPassword" )
+             return $app['twig']->render('login.html', array(
+             'warning1' => "EnterUsername", 'warning2' =>"EnterPassword",
+             'warning3' => $warning3, 'warning4' => $warning4
+
+             #,'warning3' => "EnterUsername",'warning4' => "EnterPassword"
+
+          ));
+
+      return $app['twig']->render('user.html');
+
+});
+
 
 $app->run();
