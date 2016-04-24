@@ -283,7 +283,22 @@ $app->get('/login.html', function() use($app) {
   'warning3' => "EnterUsername", 'warning4' => "EnterPassword"
 ));
 });
+##################################################################################
 
+$app->get('/posting.html', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('posting.html'
+
+);
+});
+
+
+$app->get('/about.html', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('about.html'
+
+);
+});
 ##################################################################################
 
 $app->post('/volunteerLoginCheck', function() use($app) {
