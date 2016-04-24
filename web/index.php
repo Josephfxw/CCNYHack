@@ -299,6 +299,14 @@ $app->get('/about.html', function() use($app) {
 
 );
 });
+
+
+$app->get('/home', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('index.twig'
+
+);
+});
 ##################################################################################
 
 $app->post('/volunteerLoginCheck', function() use($app) {

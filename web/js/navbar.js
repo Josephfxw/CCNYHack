@@ -9,7 +9,7 @@ document.write("                    <span class=\"icon-bar\"><\/span>");
 document.write("                    <span class=\"icon-bar\"><\/span>");
 document.write("                    <span class=\"icon-bar\"><\/span>");
 document.write("                <\/button>");
-document.write("                <a class=\"navbar-brand\" href=\"\">Assist-U<\/a>");
+document.write("                <a class=\"navbar-brand\" href=\"home\">Assist-U<\/a>");
 document.write("            <\/div>");
 document.write("            <!-- Collect the nav links, forms, and other content for toggling -->");
 document.write("            <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">");
