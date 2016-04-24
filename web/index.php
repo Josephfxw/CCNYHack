@@ -106,7 +106,7 @@ $app->post('/volunteerUserCheck', function() use($app) {
 
 
      if ( $password1 !=   $password2)
-       $warning8 = "Password_doesn't_match!";
+       $warning4 = "Password_doesn't_match!";
 
 
 
@@ -141,7 +141,7 @@ $app->post('/volunteerUserCheck', function() use($app) {
      if ( $password1  =="")
          $warning3 ="Password_can't_be_empty!";
 
-     if ( $password !=   $password2)
+     if ( $password1 !=   $password2)
        $warning4 = "Password_doesn't_match!";
 
      if ($warning1 != "EnterUsername" || $warning2 != "EnterEmail" ||$warning3 != "EnterPassword" || $warning4 != "Re-enterPassword")
@@ -257,7 +257,7 @@ $app->post('/UserForAssistanceCheck', function() use($app) {
 
 
 
-     if ($warning5 != "EnterUsername" || $warning6 != "EnterEmail" || $warning7 !="EnterPassword"|| $warning8 = "Re-enterPassword")
+     if ($warning5 != "EnterUsername" || $warning6 != "EnterEmail" || $warning7 !="EnterPassword"|| $warning8 != "Re-enterPassword")
          return $app['twig']->render('signup.html', array(
          'warning1' => "EnterUsername",'warning2' => "EnterEmail",'warning3' => "EnterPassword",'warning4' => "Re-enterPassword",
         'warning5' => $warning5, 'warning6' => $warning6,'warning7' => $warning7,'warning8' => $warning8
