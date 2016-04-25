@@ -275,14 +275,7 @@ $app->post('/UserForAssistanceCheck', function() use($app) {
 });
 
 
-##################################################################################
-$app->get('/login.html', function() use($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('login.html', array(
-  'warning1' => "EnterUsername", 'warning2' => "EnterPassword",
-  'warning3' => "EnterUsername", 'warning4' => "EnterPassword"
-));
-});
+
 ##################################################################################
 
 $app->get('/postings.html', function() use($app) {
@@ -306,6 +299,15 @@ $app->get('/home', function() use($app) {
   return $app['twig']->render('index.twig'
 
 );
+});
+
+##################################################################################
+$app->get('/login.html', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('login.html', array(
+  'warning1' => "", 'warning2' => "",
+  'warning3' => "", 'warning4' => ""
+));
 });
 ##################################################################################
 
@@ -339,10 +341,10 @@ $app->post('/volunteerLoginCheck', function() use($app) {
           }
 
          if ($username == "")
-             $warning1 = "Username_can't_be_empty!";
+             $warning1 = "Username is empty!";
 
          if ($password == "")
-             $warning2 = "Password_can't_be_empty!";
+             $warning2 = "Password is empty!";
 
          if ($warning1 == "UsernameCorrect" && $warning2 == "PasswordCorrect" )
              return $app['twig']->render('user.html');
@@ -351,7 +353,7 @@ $app->post('/volunteerLoginCheck', function() use($app) {
          return $app['twig']->render('login.html', array(
 
                  'warning1' => $warning1, 'warning2' => $warning2,
-                 'warning3' => "EnterUsername", 'warning4' =>"EnterPassword"
+                 'warning3' => "", 'warning4' =>""
 
                  #,'warning3' => "EnterUsername",'warning4' => "EnterPassword"
 
@@ -362,8 +364,8 @@ $app->post('/volunteerLoginCheck', function() use($app) {
 ######################################################################################
 $app->post('/helpSeekerLoginCheck', function() use($app) {
 
-  $warning3 = "UsernameIncorrect";
-  $warning4 = "PasswordIncorrect";
+  $warning3 = "Username Incorrect";
+  $warning4 = "Password Incorrect";
 
   $username=$_POST["username2"];
   $password=$_POST["password2"];
@@ -389,17 +391,17 @@ $app->post('/helpSeekerLoginCheck', function() use($app) {
       }
 
      if ($username == "")
-         $warning3 = "Username_can't_be_empty!";
+         $warning3 = "Username is empty!";
 
      if ($password == "")
-         $warning4 = "Password_can't_be_empty!";
+         $warning4 = "Password is empty!";
 
      if ($warning3 == "UsernameCorrect" && $warning4 == "PasswordCorrect" )
          return $app['twig']->render('user.html');
 
 
      return $app['twig']->render('login.html', array(
-             'warning1' => "EnterUsername", 'warning2' =>"EnterPassword",
+             'warning1' => "", 'warning2' =>"",
              'warning3' => $warning3, 'warning4' => $warning4
 
              #,'warning3' => "EnterUsername",'warning4' => "EnterPassword"
