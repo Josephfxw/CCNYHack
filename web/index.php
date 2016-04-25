@@ -285,7 +285,7 @@ $app->get('/postings.html', function() use($app) {
 );
 });
 
-
+##################################################################################
 $app->get('/about.html', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('about.html'
@@ -293,7 +293,7 @@ $app->get('/about.html', function() use($app) {
 );
 });
 
-
+##################################################################################
 $app->get('/home', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('index.twig'
@@ -347,7 +347,7 @@ $app->post('/volunteerLoginCheck', function() use($app) {
              $warning2 = "Password is empty.";
 
          if ($warning1 == "UsernameCorrect" && $warning2 == "PasswordCorrect" )
-             return $app['twig']->render('user.html', array(
+             return $app['twig']->render('profileVolunteer.html', array(
                'name' => $username
              ));
 
