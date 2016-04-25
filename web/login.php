@@ -90,7 +90,7 @@ echo $gender;
 
 
 <?php
-if($nameErr =="" && $emailErr =="" && $genderErr =="" && $websiteErr == "")
+if($name !="" && $email !="" && $gender !="" )
 header('location: log.php');
 
 
