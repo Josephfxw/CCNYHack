@@ -300,6 +300,14 @@ $app->get('/home', function() use($app) {
 
 );
 });
+##################################################################################
+$app->post('/editProfile.html', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+
+  return $app['twig']->render('editProfile.html', array(
+  'name' => $_POST["username"]
+));
+});
 
 ##################################################################################
 $app->get('/login.html', function() use($app) {
