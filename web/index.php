@@ -129,7 +129,8 @@ $app->post('/volunteerUserCheck', function() use($app) {
     session_start();
     $_SESSION["username"] = $username;
     $_SESSION["password"] = $password1;
-    header('location: views/success.php');
+    return header('location: views/success.php');
+
 
    }
 
