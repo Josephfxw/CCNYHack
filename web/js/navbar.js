@@ -22,7 +22,7 @@ document.write("                        <a href=\"postings.html\">View postings<
 document.write("                    <\/li>");
 document.write("                <\/ul>");
 document.write("			 <ul class=\"nav navbar-nav navbar-right\">");
-document.write("        <li><a href=\"login.html\">Log in<\/a><\/li>");
+document.write("        <li><a href=\"login.php\">Log in<\/a><\/li>");
 document.write("		<li><a href=\"signup.html\">Sign up<\/a><\/li>");
 document.write("		<\/ul>");
 document.write("		<\/div>");
