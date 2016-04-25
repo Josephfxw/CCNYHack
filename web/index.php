@@ -310,8 +310,8 @@ $app->get('/home', function() use($app) {
 ##################################################################################
 
 $app->post('/volunteerLoginCheck', function() use($app) {
-  $warning1 = "UsernameIncorrect";
-  $warning2 = "PasswordIncorrect";
+  $warning1 = "Username Incorrect";
+  $warning2 = "Password Incorrect";
 
 
   $username=$_POST["username"];
