@@ -88,5 +88,14 @@ echo "<br>";
 echo $gender;
 ?>
 
+
+<?php
+if($nameErr =="" && $emailErr =="" && $genderErr =="" && $websiteErr == "")
+header('location: log.php');
+
+
+?>
+
+
 </body>
 </html>
