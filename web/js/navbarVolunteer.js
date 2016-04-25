@@ -18,7 +18,7 @@ document.write("                <ul class=\"nav navbar-nav\">");
 //document.write("                        <a href=\"user.html\">My profile<\/a>");
 //document.write("                    <\/li>");
 document.write("                    <li>");
-document.write("                        <a href=\"addPosting.html\">Add a posting<\/a>");
+document.write("                        <a href=\"login.html\">Add a posting<\/a>");
 document.write("                    <\/li>");
 //document.write("                    <li>");
 //document.write("                        <a href=\"postings.html\">View postings<\/a>");
