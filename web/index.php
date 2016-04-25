@@ -154,7 +154,7 @@ $app->post('/volunteerUserCheck', function() use($app) {
      $st3 = $app['pdo']->prepare("INSERT into volunteerUsers_table ( name , email, password) values ('$username','$email','$password1')");
      $st3->execute();
      return $app['twig']->render('success.html', array(
-       'name' => $username, 'names' => $names
+       'name' => $username, 'password' => $password1
      ));
    }
 
@@ -233,7 +233,7 @@ $app->post('/UserForAssistanceCheck', function() use($app) {
     $st1->execute();
 
     return $app['twig']->render('success.html', array(
-      'name' => $username, 'names' => $names
+      'name' => $username, 'password' => $password1
     ));
 
    }
@@ -267,7 +267,7 @@ $app->post('/UserForAssistanceCheck', function() use($app) {
      $st3->execute();
 
      return $app['twig']->render('success.html', array(
-       'name' => $username, 'names' => $names
+       'name' => $username, 'password' => $password1
      ));
    }
 
@@ -347,7 +347,9 @@ $app->post('/volunteerLoginCheck', function() use($app) {
              $warning2 = "Password is empty.";
 
          if ($warning1 == "UsernameCorrect" && $warning2 == "PasswordCorrect" )
-             return $app['twig']->render('user.html');
+             return $app['twig']->render('user.html', array(
+               'name' => $username
+             ));
 
 
          return $app['twig']->render('login.html', array(

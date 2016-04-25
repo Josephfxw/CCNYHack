@@ -14,9 +14,9 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <link href="css/custom.css" rel="stylesheet">
-    
+
     <script src="js/jquery.js"></script>
-  
+
 
 </head>
     <body>
@@ -25,8 +25,8 @@
 <div class="container target">
     <div class="row">
         <div class="col-sm-10">
-             <h1 class="">Jamie Flyer</h1>
-         
+             <h1 class="">{{name}}</h1>
+
           <button type="button" class="btn btn-success">Like</button>  <button type="button" class="btn btn-info">Send me a message</button>
 <br>
         </div>
@@ -43,8 +43,8 @@
                 <li class="list-group-item text-right"><span class="pull-left"><strong class="">Joined</strong></span> 2.13.2014</li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong class="">Last seen</strong></span> Yesterday</li>
                     <li class="list-group-item text-right"><span class="pull-left"><strong class="">Location</strong></span>New York, New York</li>
-              <!--<li class="list-group-item text-right"><span class="pull-left"><strong class="">Role: </strong></span> 
-               
+              <!--<li class="list-group-item text-right"><span class="pull-left"><strong class="">Role: </strong></span>
+
                       </li>-->
             </ul>
            <div class="panel panel-default">
@@ -63,7 +63,7 @@
 
                 </div>
             </div>-->
-          
+
             <ul class="list-group">
                 <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i>
 
@@ -75,7 +75,7 @@
             </ul>
             <div class="panel panel-default">
                 <div class="panel-heading">Social Media</div>
-                <div class="panel-body">	<i class="fa fa-facebook fa-2x"></i>  <i class="fa fa-github fa-2x"></i> 
+                <div class="panel-body">	<i class="fa fa-facebook fa-2x"></i>  <i class="fa fa-github fa-2x"></i>
                     <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i>  <i class="fa fa-google-plus fa-2x"></i>
 
                 </div>
@@ -85,7 +85,7 @@
         <div class="col-sm-9" style="" contenteditable="false">
             <div class="panel panel-default">
                 <div class="panel-heading">Jamie's Bio</div>
-                <div class="panel-body"> I love me, you should too	
+                <div class="panel-body"> I love me, you should too
 
                 </div>
             </div>
@@ -101,10 +101,10 @@
 								Jason
 							</h3>
 							<p>
-								
+
 							</p>
 							<p>
-							
+
 							</p>
 						</div>
 					</div>
@@ -119,12 +119,12 @@
 							<p>
 							</p>
 							<p>
-							
+
 							</p>
 						</div>
 					</div>
 				</div>
-                      
+
 				<div class="col-md-4">
 					<div class="thumbnail">
 						<img alt="300x200" src="http://www-mc2.cardiff.ac.uk/resource/for/1499.18569.file.eng.jpg">
@@ -133,20 +133,20 @@
 								Rebecca
 							</h3>
 							<p>
-								
+
 							</p>
 							<p>
-							
+
 							</p>
 						</div>
                 </div>
-                 
+
             </div>
-                     
+
             </div>
-                 
+
         </div>
-              
+
     </div>
            <!--<div class="panel panel-default">
                 <div class="panel-heading">Starfox221's Bio</div>
@@ -162,7 +162,7 @@
         <footer id="footer">
             <div class="row-fluid">
                 <!--<div class="span3">
-                    <p> 
+                    <p>
                         <a href="http://twitter.com/Bootply" rel="nofollow" title="Bootply on Twitter" target="ext">Twitter</a><br>
                         <a href="https://plus.google.com/+Bootply" rel="publisher">Google+</a><br>
                         <a href="http://facebook.com/Bootply" rel="nofollow" title="Bootply on Facebook" target="ext">Facebook</a><br>
@@ -170,7 +170,7 @@
                     </p>
                 </div>-->
                 <!--<div class="span3">
-                    <p> 
+                    <p>
                         <a data-toggle="modal" role="button" href="#contactModal">Contact Us</a><br>
                         <a href="/tags">Tags</a><br>
                         <a href="/bootstrap-community">Community</a><br>
@@ -178,7 +178,7 @@
                     </p>
                 </div>-->
                 <!--<div class="span3">
-                    <p> 
+                    <p>
                         <a href="http://www.bootbundle.com" target="ext" rel="nofollow">BootBundle</a><br>
                         <a href="https://bootstrapbay.com/?ref=skelly" target="_ext" rel="nofollow" title="Premium Bootstrap themes">Bootstrap Themes</a><br>
                         <a href="http://www.bootstrapzero.com" target="_ext" rel="nofollow" title="Free Bootstrap templates">BootstrapZero</a><br>
@@ -190,7 +190,7 @@
                 </div>
             </div>
         </footer>
-        
+
         <script src="/plugins/bootstrap-select.min.js"></script>
         <script src="/codemirror/jquery.codemirror.js"></script>
         <script src="/beautifier.js"></script>
@@ -206,14 +206,14 @@
         jQuery.fn.shake = function(intShakes, intDistance, intDuration, foreColor) {
             this.each(function() {
                 if (foreColor && foreColor!="null") {
-                    $(this).css("color",foreColor); 
+                    $(this).css("color",foreColor);
                 }
-                $(this).css("position","relative"); 
+                $(this).css("position","relative");
                 for (var x=1; x<=intShakes; x++) {
                 $(this).animate({left:(intDistance*-1)}, (((intDuration/intShakes)/4)))
                 .animate({left:intDistance}, ((intDuration/intShakes)/2))
                 .animate({left:0}, (((intDuration/intShakes)/4)));
-                $(this).css("color",""); 
+                $(this).css("color","");
             }
           });
         return this;
@@ -221,10 +221,10 @@
         </script>
         <script>
         $(document).ready(function() {
-        
+
             $('.tw-btn').fadeIn(3000);
             $('.alert').delay(5000).fadeOut(1500);
-            
+
             $('#btnLogin').click(function(){
                 $(this).text("...");
                 $.ajax({
@@ -282,12 +282,12 @@
                     }
                 });
             });
-            
+
             $('.loginFirst').click(function(){
                 $('#navLogin').trigger('click');
                 return false;
             });
-            
+
             $('#btnForgotPassword').on('click',function(){
                 $.ajax({
                     url: "/resetPassword",
@@ -308,9 +308,9 @@
                     }
                 });
             });
-            
+
             $('#btnContact').click(function(){
-                
+
                 $.ajax({
                     url: "/contact",
                     type: "post",
@@ -332,17 +332,17 @@
                 });
                 return false;
             });
-            
+
             /*
             $('.nav .dropdown-menu input').on('click touchstart',function(e) {
                 e.stopPropagation();
             });
             */
-            
-            
-            
-            
-            
+
+
+
+
+
         });
         $.fn.serializeObject = function()
         {
@@ -368,7 +368,7 @@
         <!-- Quantcast Tag -->
         <script type="text/javascript">
         var _qevents = _qevents || [];
-        
+
         (function() {
         var elem = document.createElement('script');
         elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
@@ -377,7 +377,7 @@
         var scpt = document.getElementsByTagName('script')[0];
         scpt.parentNode.insertBefore(elem, scpt);
         })();
-        
+
         _qevents.push({
         qacct:"p-0cXb7ATGU9nz5"
         });
@@ -411,7 +411,7 @@
                  <h3>Password Lookup</h3>
             </div>
             <div class="modal-body">
-                  <form class="form form-horizontal" id="formForgotPassword">    
+                  <form class="form form-horizontal" id="formForgotPassword">
                   <div class="control-group">
                       <label class="control-label" for="inputEmail">Email</label>
                       <div class="controls">
@@ -423,10 +423,10 @@
                   </form>
             </div>
             <div class="modal-footer pull-center">
-                <a href="#" data-dismiss="modal" aria-hidden="true" class="btn">Cancel</a> 	
+                <a href="#" data-dismiss="modal" aria-hidden="true" class="btn">Cancel</a>
             	<a href="#" data-dismiss="modal" id="btnForgotPassword" class="btn btn-success">Reset Password</a>
             </div>
-            
+
         </div>
         <div id="upgradeModal" class="modal hide">
             <div class="modal-header">
@@ -474,16 +474,16 @@
                   </form>
             </div>
             <div class="modal-footer pull-center">
-                <a href="#" data-dismiss="modal" aria-hidden="true" class="btn">Cancel</a>     
+                <a href="#" data-dismiss="modal" aria-hidden="true" class="btn">Cancel</a>
                 <a href="#" data-dismiss="modal" aria-hidden="true" id="btnContact" role="button" class="btn btn-success">Send</a>
             </div>
         </div>
-        
-        
-        
-	
+
+
+
+
 	<script src="/plugins/bootstrap-pager.js"></script>
-    
+
 </div>
          <script src="js/bootstrap.min.js"></script>
     </body>

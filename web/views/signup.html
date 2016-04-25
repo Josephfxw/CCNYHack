@@ -15,6 +15,12 @@
 
 
     <link href="css/custom.css" rel="stylesheet">
+<script>
+    var input = document.getElementById('username');
+    input.oninvalid = function(event) {
+    event.target.setCustomValidity('Username should only contain lowercase letters. e.g. john');
+}
+</script>
 
 </head>
 
@@ -32,9 +38,9 @@
   <div class="form-group row">
   <div class="col-md-6">
 
-  
 
-    <input type="text" class="form-control" name="username" placeholder = "Username">
+
+    <input type="text" class="form-control" id = "username" name="username" placeholder = "Username" pattern="[a-z]{1,15}>
    <span style="color:red;">* {{ warning1 }}</span>
   </div>
   </div>
@@ -75,7 +81,7 @@
   <div class="form-group row">
   <div class="col-md-6">
 
-    <input type="text" class="form-control" name="username2" placeholder= "Username">
+    <input type="text" class="form-control" name="username2" placeholder= "Username" pattern="[a-z]{1,15}>
     <span style="color:red;">* {{ warning5 }}</span>
   </div>
   </div>
