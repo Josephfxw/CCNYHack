@@ -35,23 +35,23 @@
         </div>
     </div>
   <br>
-    <div class="row">
-        <div class="col-sm-9">
-            <!--left col-->
-            <ul class="list-group">
-                <li class="panel-heading" contenteditable="false">Profile</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Joined</strong></span> 2.13.2014</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Last seen</strong></span> Yesterday</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Location</strong></span>New York, New York</li>
-              <!--<li class="list-group-item text-right"><span class="pull-left"><strong class="">Role: </strong></span>
 
-                      </li>-->
-            </ul>
+  <div class="panel panel-default">
+    <div class="panel-heading">Profile</div>
+    <form action="upload" method="post" enctype="multipart/form-data">
+        Select image to upload:
+        <input type="file" name="fileToUpload" id="fileToUpload">
+        <input type="submit" value="Upload Image" name="submit">
+    </form>
 
 
-        </div>
 
-</div>
+
+   </div>
+
+
+
+
          <script src="js/bootstrap.min.js"></script>
     </body>
 </html>
