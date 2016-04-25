@@ -129,7 +129,7 @@ $app->post('/volunteerUserCheck', function() use($app) {
     session_start();
     $_SESSION["username"] = $username;
     $_SESSION["password"] = $password1;
-    return header('location: views/success.php');
+    return $app['twig']->render('success.php');
 
 
    }
