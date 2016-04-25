@@ -52,8 +52,8 @@ function test_input($data) {
 }
 ?>
 
-<h2>PHP Form Validation Example</h2>
-<a href="log.php">forward</a>
+<h2>hahaaaaaaa</h2>
+<a href="login.php">backward</a>
 <p><span class="error">* required field.</span></p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
    Name: <input type="text" name="name">
