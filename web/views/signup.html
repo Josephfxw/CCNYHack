@@ -15,12 +15,7 @@
 
 
     <link href="css/custom.css" rel="stylesheet">
-<script>
-    var input = document.getElementById('username');
-    input.oninvalid = function(event) {
-    event.target.setCustomValidity('Username should only contain lowercase letters. e.g. john');
-}
-</script>
+
 
 </head>
 
@@ -72,6 +67,14 @@
 	<input class="btn btn-default" type="submit" value="Sign up">
     </form>
   </div>
+
+  <script>
+      var input = document.getElementById('username');
+      input.oninvalid = function(event) {
+      event.target.setCustomValidity('Username should only contain lowercase letters. e.g. john');
+  }
+  </script>
+
 
 
     <div class="container">
