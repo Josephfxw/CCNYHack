@@ -276,7 +276,7 @@ $app->post('/UserForAssistanceCheck', function() use($app) {
 
 
 ##################################################################################
-$app->get('/login.html', function() use($app) {
+$app->get('/login.php', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('login.html', array(
   'warning1' => "EnterUsername", 'warning2' => "EnterPassword",
