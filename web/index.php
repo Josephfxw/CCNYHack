@@ -301,10 +301,10 @@ $app->get('/home', function() use($app) {
 );
 });
 ##################################################################################
-$app->post('/editProfile.html', function() use($app) {
+$app->post('/volunteerProfileEdit.html', function() use($app) {
   $app['monolog']->addDebug('logging output.');
 
-  return $app['twig']->render('editProfile.html', array(
+  return $app['twig']->render('volunteerProfileEdit.html', array(
   'name' => $_POST["username"]
 ));
 });
@@ -355,7 +355,7 @@ $app->post('/volunteerLoginCheck', function() use($app) {
              $warning2 = "Password is empty.";
 
          if ($warning1 == "UsernameCorrect" && $warning2 == "PasswordCorrect" )
-             return $app['twig']->render('profileVolunteer.html', array(
+             return $app['twig']->render('volunteerProfile.html', array(
                'name' => $username
              ));
 
