@@ -3,13 +3,19 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<p>Your refistration is successful!</p>
-
-
-Welcome {{ name }}<br>
+<p>{{ name }},your registration is successful!</p>
 
 
 
+<form action="volunteerLoginCheck" method="post">
+<input class="btn btn-default" type="submit" value="Sign in">
+</form>
+
+
+
+
+
+<!--
 <p>Got these rows from the database:</p>
 <ul>
 {% for n in names %}
@@ -20,3 +26,4 @@ Welcome {{ name }}<br>
 </ul>
 
 {% endblock %}
+-->

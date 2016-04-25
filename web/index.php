@@ -122,9 +122,14 @@ $app->post('/volunteerUserCheck', function() use($app) {
     $st1 = $app['pdo']->prepare("INSERT into volunteerUsers_table ( name , email, password) values ('$username','$email','$password1')");
     $st1->execute();
 
-    return $app['twig']->render('success.html', array(
-      'name' => $username, 'names' => $names
-    ));
+  #  return $app['twig']->render('success.html', array(
+  #    'name' => $username, 'names' => $names
+  #  ));
+
+    session_start();
+    $_SESSION["username"] = $username;
+    $_SESSION["password"] = $password1;
+    header('location: views/success.php');
 
    }
 
