@@ -52,7 +52,7 @@
   <div class="col-md-6">
 
 
-    <input type="password" class="form-control" name="password1" placeholder= "Password">
+    <input type="password" class="form-control" id ="password1" name="password1" placeholder= "Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
     <span style="color:red;">* {{ warning3 }}</span>
   </div>
   </div>
@@ -60,7 +60,7 @@
   <div class="form-group row">
 
   <div class="col-md-6">
-    <input type="password" class="form-control" name="password2" placeholder= "Confirm Password">
+    <input type="password" class="form-control" id="password2" name="password2" placeholder= "Confirm Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
     <span style="color:red;">* {{ warning4 }}</span>
   </div>
   </div>
@@ -68,12 +68,7 @@
     </form>
   </div>
 
-  <script>
-      var input = document.getElementById('username');
-      input.oninvalid = function(event) {
-      event.target.setCustomValidity('Username should only contain lowercase letters. e.g. john');
-  }
-  </script>
+
 
 
 
@@ -84,7 +79,7 @@
   <div class="form-group row">
   <div class="col-md-6">
 
-    <input type="text" class="form-control" name="username2" placeholder= "Username" pattern="[a-z]{1,15}>
+    <input type="text" class="form-control" id = "username2" name="username2" placeholder= "Username" pattern="[a-z]{1,15}">
     <span style="color:red;">* {{ warning5 }}</span>
   </div>
   </div>
@@ -98,20 +93,55 @@
   <div class="form-group row">
   <div class="col-md-6">
 
-    <input type="password" class="form-control" name="password3" placeholder= "Password">
+    <input type="password" class="form-control" id="password3" name="password3" placeholder= "Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
     <span style="color:red;">* {{ warning7 }}</span>
   </div>
   </div>
 
   <div class="form-group row">
   <div class="col-md-6">
-    <input type="password" class="form-control" name="password4" placeholder= "Confirm Password">
+    <input type="password" class="form-control" id="password4" name="password4" placeholder= "Confirm Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
     <span style="color:red;">* {{ warning8 }}</span>
   </div>
   </div>
 	<input class="btn btn-default" type="submit" value="Sign up">
     </form>
   </div>
+
+
+
+  <script>
+var input1 = document.getElementById('username');
+input1.oninvalid = function(event) {
+event.target.setCustomValidity('Username should only contain lowercase letters');
+}
+
+var input2 = document.getElementById('passsword1');
+input2.oninvalid = function(event) {
+event.target.setCustomValidity('Password must contain 8 or more characters that are of at least one number, and one uppercase and lowercase letter');
+}
+
+var input3 = document.getElementById('passsword2');
+input3.oninvalid = function(event) {
+event.target.setCustomValidity('Password must contain 8 or more characters that are of at least one number, and one uppercase and lowercase letter');
+}
+
+var input4 = document.getElementById('username2');
+input4.oninvalid = function(event) {
+event.target.setCustomValidity('Username should only contain lowercase letters');
+}
+
+var input5 = document.getElementById('passsword3');
+input5.oninvalid = function(event) {
+event.target.setCustomValidity('Password must contain 8 or more characters that are of at least one number, and one uppercase and lowercase letter');
+}
+
+var input6 = document.getElementById('passsword4');
+input6.oninvalid = function(event) {
+event.target.setCustomValidity('Password must contain 8 or more characters that are of at least one number, and one uppercase and lowercase letter');
+}
+  </script>
+
 
 	<!-- jQuery -->
     <script src="js/jquery.js"></script>
