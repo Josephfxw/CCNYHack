@@ -23,15 +23,15 @@ class ImageManipulator
      * @return void
      */
     public function __construct($file = null)
-    {   print "In BaseClass constructor\n";
+    {  // print "In BaseClass constructor\n";
         if (null !== $file) {
-          print "t1";
+          //print "t1";
             if (is_file($file)) {
-              print "t2";
+              //print "t2";
 
                 $this->setImageFile($file);
             } else {
-              print "t3";
+              //print "t3";
 
                 $this->setImageString($file);
             }
@@ -48,20 +48,20 @@ class ImageManipulator
     public function setImageFile($file)
     {
         if (!(is_readable($file) && is_file($file))) {
-          print "t3";
+          //print "t3";
 
             throw new InvalidArgumentException("Image file $file is not readable");
         }
 
         if (is_resource($this->image)) {
-          print "t4";
+          //print "t4";
 
             imagedestroy($this->image);
-            print "t5";
+            //print "t5";
         }
 
         list ($this->width, $this->height, $type) = getimagesize($file);
-        print "t6";
+      //  print "t6";
         switch ($type) {
             case IMAGETYPE_GIF  :
                 $this->image = imagecreatefromgif($file);
@@ -77,7 +77,7 @@ class ImageManipulator
             default             :
                 throw new InvalidArgumentException("Image type $type not supported");
         }
-       print "t9";
+       //print "t9";
         return $this->image;
     }
 

@@ -19,3 +19,6 @@ type "SELECT * FROM tablename;" to view the table contents.
 
 delete a table:
 DROP TABLE UserForAssistance_table
+
+composer is the Dependency Manager for PHP
+After you add dependency in composer.json, you need run command "composer update"
