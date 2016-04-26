@@ -18,6 +18,7 @@ if ($_FILES['fileToUpload']['error'] > 0) {
         $newName = time() . '_' . $_FILES['fileToUpload']['name'];
         echo "<br />".$newName;
         $destination = 'uploads/' . $_FILES['fileToUpload']['name'];
+        echo move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $destination);
         if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $destination)) {
             echo "succesfully copied";
         }
