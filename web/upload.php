@@ -19,13 +19,13 @@ if ($_FILES['fileToUpload']['error'] > 0) {
         echo "<br />".$newName;
         $destination = 'uploads/';
 
-        if (True) {
-          move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $destination);
+        if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $destination)) {
             echo "succesfully copied";
         }
-    } else {
+        else {
         echo "You must upload an image";
     }
+  }
 }
 
 echo 'enddd';
