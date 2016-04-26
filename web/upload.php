@@ -30,3 +30,4 @@ if ($_FILES['fileToUpload']['error'] > 0) {
 
 
 echo '<img src="uploads/bird.jpeg" alt="Smiley face" height="42" width="42">';
+echo '<img src="uploads/background2.jpeg" alt="Smiley face" height="42" width="42">';
