@@ -16,7 +16,7 @@ if ($_FILES['fileToUpload']['error'] > 0) {
         // we are renaming the file so we can upload files with the same name
         // we simply put current timestamp in fron of the file name
         $newName = time() . '_' . $_FILES['fileToUpload']['name'];
-        echo $newName
+        echo $newName;
         $destination = 'uploads/' . $newName;
         if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $destination)) {
             echo 'File ' .$newName. ' succesfully copied';
