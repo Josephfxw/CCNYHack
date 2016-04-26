@@ -115,7 +115,7 @@
           <input type="text" name="avaliableTime" value = "Mon-Wed 4-6pm"><br>
         </fieldset>
 
-          <input type="submit" value="Save" />
+          <button type="submit" class="btn btn-primary">Save</button>
 
       </form>
     </div>
