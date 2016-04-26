@@ -25,3 +25,4 @@ if ($_FILES['fileToUpload']['error'] > 0) {
         echo 'You must upload an image...';
     }
 }
+echo "end";
