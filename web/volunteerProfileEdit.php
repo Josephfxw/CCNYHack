@@ -73,9 +73,7 @@
 
 <br>
         </div>
-      <div class="col-sm-2 img-padding"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="http://ichef.bbci.co.uk/news/976/media/images/83351000/jpg/_83351965_explorer273lincolnshirewoldssouthpicturebynicholassilkstone.jpg"></a>
-
-        </div>
+    
     </div>
   <br>
 
