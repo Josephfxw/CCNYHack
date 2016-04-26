@@ -77,7 +77,7 @@
     </div>
   <br>
 
-  <div class="panel panel-default">
+  <div class="panel panel-default" width = "50%">
     <div class="panel-heading">Public Profile</div>
     <div>
       <h5> Profile picture</h5>
