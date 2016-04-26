@@ -69,6 +69,7 @@ class ImageManipulator
             case IMAGETYPE_JPEG :
                 print "t7";
                 $this->image = imagecreatefromjpeg($file);
+                print "t8";
                 break;
             case IMAGETYPE_PNG  :
                 $this->image = imagecreatefrompng($file);
@@ -76,8 +77,8 @@ class ImageManipulator
             default             :
                 throw new InvalidArgumentException("Image type $type not supported");
         }
-
-        return $this;
+       print "t9";
+        return $this->image;
     }
 
     /**
