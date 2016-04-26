@@ -22,6 +22,6 @@ DROP TABLE UserForAssistance_table
 
 composer is the Dependency Manager for PHP
 After you add dependency in composer.json, you need run command "composer update"
-
+need add gd dependency to composer.json to use ImageManipulator
 check errors:heroku logs
 run terminal:heroku run bash

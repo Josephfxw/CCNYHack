@@ -40,13 +40,13 @@
     <div class="panel-heading">Public Profile</div>
     <div>
       <form enctype="multipart/form-data" method="post" action="upload2.php">
-        <div class="row">
-          <label for="fileToUpload">Select a File to Upload</label><br />
+
+          
           <input type="file" name="fileToUpload" id="fileToUpload" />
-        </div>
-        <div class="row">
+
+
           <input type="submit" value="Upload" />
-        </div>
+
       </form>
     </div>
 
