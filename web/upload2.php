@@ -10,7 +10,7 @@ class Foo {
     public function __construct($file = null){
            $this->gender = $file;
            $this->genitalOrgan = $aFuncName;
-
+           print $this->gender;
 
        }
 
@@ -19,9 +19,9 @@ class Foo {
     }
 }
 
-$foo = new Foo("Hllo");
-echo $foo->gender. "<br />";
-echo $foo->$aMemberVar;
+$foo = new Foo("Hello");
+//echo $foo->gender. "<br />";
+//echo $foo->$aMemberVar;
 
 $manipulator = new ImageManipulator($_FILES['fileToUpload']['tmp_name']);
 if ($_FILES['fileToUpload']['error'] > 0) {
