@@ -61,7 +61,7 @@ $app->post('/volunteerUserCheck', function() use($app) {
   $email=$_POST["email"];
   $password1=$_POST["password1"];
   $password2=$_POST["password2"];
-
+  $password9= $_POST["password9"];
   $warning1 = "";
   $warning2 = "";
   $warning3 = "";
