@@ -81,11 +81,11 @@
     <div class="panel-heading">Public Profile</div>
     <div>
       <h5> Profile picture</h5>
-      <?php echo '<img src="uploads/bird.jpeg" alt="Smiley face" height="100" width="100">'; ?>
+      <?php echo '<img src="uploads/bird.jpeg" alt="Smiley face" height="150" width="150">'; ?>
       <form enctype="multipart/form-data" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
           <fieldset class="form-group">
-          <input type="file" class="form-control" name="fileToUpload" id="fileToUpload" />
+          <input type="file" name="fileToUpload" id="fileToUpload" />
           </fieldset>
 
           <button type="submit" class="btn btn-primary">Upload</button>
