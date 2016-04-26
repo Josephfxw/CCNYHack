@@ -37,10 +37,10 @@
   <br>
 
   <div class="panel panel-default">
-    <div class="panel-heading">Profile</div>
+    <div class="panel-heading">Public Profile</div>
     <div>
       <form action="upload" method="post" enctype="multipart/form-data">
-        
+
         <input type="file" name="fileToUpload" id="fileToUpload">
         <input type="submit" value="Upload Image" name="submit">
       </form>
