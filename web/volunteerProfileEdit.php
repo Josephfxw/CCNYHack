@@ -85,7 +85,7 @@
       <form enctype="multipart/form-data" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
           <fieldset class="form-group">
-          <input type="file" name="fileToUpload" id="fileToUpload" />
+          <input type="file" class="form-control" name="fileToUpload" id="fileToUpload" />
           </fieldset>
 
           <button type="submit" class="btn btn-primary">Upload</button>
@@ -97,22 +97,22 @@
 
         <fieldset class="form-group">
           <label for="name">Name</label> <br>
-          <input type="text" name="name" value = "Joe"><br>
+          <input type="text" class="form-control" name="name" value = "Joe"><br>
         </fieldset>
 
         <fieldset class="form-group">
           <label for="name">Email</label><br>
-          <input type="email" name="email" value = "Josephxwf@gmail.com"><br>
+          <input type="email" class="form-control" name="email" value = "Josephxwf@gmail.com"><br>
         </fieldset>
 
         <fieldset class="form-group">
           <label for="name">Location</label><br>
-          <input type="text" name="location" value = "New York"><br>
+          <input type="text" class="form-control" name="location" value = "New York"><br>
         </fieldset>
 
         <fieldset class="form-group">
           <label for="name">Avaliable Time</label><br>
-          <input type="text" name="avaliableTime" value = "Mon-Wed 4-6pm"><br>
+          <input type="text" class="form-control" name="avaliableTime" value = "Mon-Wed 4-6pm"><br>
         </fieldset>
 
           <button type="submit" class="btn btn-primary">Save</button>
