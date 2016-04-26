@@ -1,6 +1,6 @@
 <?php
 // include ImageManipulator class
-require_once('ImageManipulator.php');
+require_once('/ImageManipulator.php');
 
 if ($_FILES['fileToUpload']['error'] > 0) {
     echo "Error: " . $_FILES['fileToUpload']['error'] . "<br />";
@@ -33,3 +33,4 @@ if ($_FILES['fileToUpload']['error'] > 0) {
         echo 'You must upload an image...';
     }
 }
+?>
