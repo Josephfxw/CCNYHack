@@ -264,4 +264,3 @@ class ImageManipulator
         return $this->height;
     }
 }
-?>
