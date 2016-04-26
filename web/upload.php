@@ -29,4 +29,4 @@ if ($_FILES['fileToUpload']['error'] > 0) {
 }
 
 
-echo '<img src="uploads/background.jpeg" alt="Smiley face" height="42" width="42">';
+echo '<img src="uploads/bird.jpeg" alt="Smiley face" height="42" width="42">';
