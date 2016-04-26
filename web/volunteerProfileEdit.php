@@ -46,12 +46,23 @@
                        )
         );
 
+        $st1 = $app['pdo']->prepare("INSERT into volunteerUsers_table ( name , email, password) values ('xuewei','josephfxw@hotmail.com','Xuewei1234')");
+        $st1->execute();
 
+        $st = $app['pdo']->prepare('SELECT name FROM volunteerUsers_table');
+        $st->execute();
 
+        $names = array();
+        while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+          $app['monolog']->addDebug('Row ' . $row['name']);
+          $names[] = $row;
+        }
           return $app['twig']->render('database.twig', array(
             'names' => $names
           ));
-    
+
+
+
                 // include ImageManipulator class
                 require_once('ImageManipulator.php');
 
