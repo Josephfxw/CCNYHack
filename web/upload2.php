@@ -1,6 +1,7 @@
 <?php
 // include ImageManipulator class
-require_once('ImageManipulator.php');
+include('ImageManipulator.php');
+echo "0";
 $manipulator = new ImageManipulator($_FILES['fileToUpload']['tmp_name']);
 if ($_FILES['fileToUpload']['error'] > 0) {
     echo "Error: " . $_FILES['fileToUpload']['error'] . "<br />";
