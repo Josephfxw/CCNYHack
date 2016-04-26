@@ -17,7 +17,7 @@ if ($_FILES['fileToUpload']['error'] > 0) {
         // we simply put current timestamp in fron of the file name
         $newName = time() . '_' . $_FILES['fileToUpload']['name'];
         echo "<br />".$newName;
-        $destination = 'uploads/';
+        $destination = 'uploads/.$_FILES['fileToUpload']['name']';
 
         if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $destination)) {
             echo "succesfully copied";
@@ -28,4 +28,5 @@ if ($_FILES['fileToUpload']['error'] > 0) {
   }
 }
 
+<img src="uploads/background.jpeg" alt="Smiley face" height="42" width="42">
 echo 'enddd';
