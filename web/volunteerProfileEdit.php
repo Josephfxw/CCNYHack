@@ -20,7 +20,7 @@
 
 </head>
     <body>
-        <script src="js/navbarVolunteer.js"></script>
+        <script src="js/navbarVolunteerProfileEdit.js"></script>
 
         <?php
                 // include ImageManipulator class
@@ -60,7 +60,7 @@
 
 
 
-                echo '<img src="uploads/bird.png" alt="Smiley face" height="42" width="42">';
+            //    echo '<img src="uploads/bird.png" alt="Smiley face" height="42" width="42">';
         ?>
 
 
