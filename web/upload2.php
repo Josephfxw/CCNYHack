@@ -7,14 +7,21 @@ class Foo {
     public $aMemberVar = 'aMemberVar Member Variable';
     public $aFuncName = 'aMemberFunc';
 
+    public function __construct($file = null){
+           $this->gender = $file;
+           $this->genitalOrgan = $aFuncName;
+
+
+       }
 
     function aMemberFunc() {
         print 'Inside `aMemberFunc()`';
     }
 }
 
-$foo = new Foo;
-echo $foo->aMemberFunc();
+$foo = new Foo("Hllo");
+echo $foo->gender. "<br />";
+echo $foo->$aMemberVar;
 
 $manipulator = new ImageManipulator($_FILES['fileToUpload']['tmp_name']);
 if ($_FILES['fileToUpload']['error'] > 0) {
