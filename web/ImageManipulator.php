@@ -25,9 +25,14 @@ class ImageManipulator
     public function __construct($file = null)
     {   print "In BaseClass constructor\n";
         if (null !== $file) {
+          print "t1";
             if (is_file($file)) {
+              print "t2";
+
                 $this->setImageFile($file);
             } else {
+              print "t3";
+
                 $this->setImageString($file);
             }
         }
