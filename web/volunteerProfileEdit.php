@@ -81,7 +81,7 @@
     <div class="panel-heading">Public Profile</div>
     <div>
       <h5> Profile picture</h5>
-      <?php echo '<img src="uploads/bird.jpeg" alt="Smiley face" height="42" width="42">'; ?>
+      <?php echo '<img src="uploads/bird.jpeg" alt="Smiley face" height="100" width="100">'; ?>
       <form enctype="multipart/form-data" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
           <fieldset class="form-group">
