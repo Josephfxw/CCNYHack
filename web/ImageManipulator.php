@@ -48,20 +48,26 @@ class ImageManipulator
     public function setImageFile($file)
     {
         if (!(is_readable($file) && is_file($file))) {
+          print "t3";
+
             throw new InvalidArgumentException("Image file $file is not readable");
         }
 
         if (is_resource($this->image)) {
+          print "t4";
+
             imagedestroy($this->image);
+            print "t5";
         }
 
         list ($this->width, $this->height, $type) = getimagesize($file);
-
+        print "t6";
         switch ($type) {
             case IMAGETYPE_GIF  :
                 $this->image = imagecreatefromgif($file);
                 break;
             case IMAGETYPE_JPEG :
+                print "t7";
                 $this->image = imagecreatefromjpeg($file);
                 break;
             case IMAGETYPE_PNG  :
