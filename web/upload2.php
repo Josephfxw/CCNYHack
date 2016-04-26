@@ -27,9 +27,12 @@ if ($_FILES['fileToUpload']['error'] > 0) {
         // center cropping to 200x130
         $newImage = $manipulator->crop($x1, $y1, $x2, $y2);
         // saving file to uploads folder
-        $manipulator->save('uploads/' . $newNamePrefix . $_FILES['fileToUpload']['name']);
+        $manipulator->save('uploads/' . $_FILES['fileToUpload']['name']);
         echo 'Done ...';
     } else {
         echo 'You must upload an image...';
     }
 }
+
+
+echo '<img src="uploads/bird.jpeg" alt="Smiley face" height="42" width="42">';
