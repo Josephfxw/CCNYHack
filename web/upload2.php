@@ -14,6 +14,7 @@ if ($_FILES['fileToUpload']['error'] > 0) {
 
         $newNamePrefix = time() . '_';
         echo "1";
+        echo $_FILES['fileToUpload']['tmp_name'];
         $manipulator = new ImageManipulator($_FILES['fileToUpload']['tmp_name']);
         // resizing to 200x200
         echo "2";
