@@ -39,7 +39,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">Public Profile</div>
     <div>
-      <form enctype="multipart/form-data" method="post" action="upload.php">
+      <form enctype="multipart/form-data" method="post" action="upload2.php">
         <div class="row">
           <label for="fileToUpload">Select a File to Upload</label><br />
           <input type="file" name="fileToUpload" id="fileToUpload" />
