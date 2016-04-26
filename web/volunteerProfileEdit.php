@@ -84,11 +84,11 @@
       <?php echo '<img src="uploads/bird.jpeg" alt="Smiley face" height="42" width="42">'; ?>
       <form enctype="multipart/form-data" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
-
+          <fieldset class="form-group">
           <input type="file" name="fileToUpload" id="fileToUpload" />
+          </fieldset>
 
-
-          <input type="submit" value="Upload" />
+          <button type="submit" class="btn btn-primary">Upload</button>
 
       </form>
       <p style="line-height: 20px"></p>
@@ -96,22 +96,22 @@
 
 
         <fieldset class="form-group">
-          <label for="name">Name</label>
+          <label for="name">Name</label> <br>
           <input type="text" name="name" value = "Joe"><br>
         </fieldset>
 
         <fieldset class="form-group">
-          <label for="name">Email</label>
+          <label for="name">Email</label><br>
           <input type="email" name="email" value = "Josephxwf@gmail.com"><br>
         </fieldset>
 
         <fieldset class="form-group">
-          <label for="name">Location</label>
+          <label for="name">Location</label><br>
           <input type="text" name="location" value = "New York"><br>
         </fieldset>
 
         <fieldset class="form-group">
-          <label for="name">Avaliable Time</label>
+          <label for="name">Avaliable Time</label><br>
           <input type="text" name="avaliableTime" value = "Mon-Wed 4-6pm"><br>
         </fieldset>
 
