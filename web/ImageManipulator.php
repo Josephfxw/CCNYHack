@@ -68,7 +68,7 @@ class ImageManipulator
                 break;
             case IMAGETYPE_JPEG :
 
-                $this->image = @imagecreatefromjpeg($file);
+                $this->image = imagecreatefromjpeg($file);
 
                 break;
             case IMAGETYPE_PNG  :
