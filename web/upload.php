@@ -1,7 +1,4 @@
 <?php
-// include ImageManipulator class
-require_once('ImageManipulator.php');
-
 if ($_FILES['fileToUpload']['error'] > 0) {
     echo "Error: " . $_FILES['fileToUpload']['error'] . "<br />";
 } else {
@@ -11,17 +8,16 @@ if ($_FILES['fileToUpload']['error'] > 0) {
     $fileExtension = strrchr($_FILES['fileToUpload']['name'], ".");
     // check if file Extension is on the list of allowed ones
     if (in_array($fileExtension, $validExtensions)) {
-        $newNamePrefix = time() . '_';
-        $manipulator = new ImageManipulator($_FILES['fileToUpload']['tmp_name']);
-        // resizing to 200x200
-        $newImage = $manipulator->resample(200, 200);
-        // saving file to uploads folder
-        $manipulator->save('uploads/' . $newNamePrefix . $_FILES['fileToUpload']['name']);
-        echo 'Done ...';
+        // we are renaming the file so we can upload files with the same name
+        // we simply put current timestamp in fron of the file name
+        $newName = time() . '_' . $_FILES['fileToUpload']['name'];
+        $destination = 'uploads/' . $newName;
+        if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $destination)) {
+            echo 'File ' .$newName. ' succesfully copied';
+        }
     } else {
         echo 'You must upload an image...';
     }
 }
-
 
 echo 'enddd';
