@@ -15,7 +15,7 @@ document.write("            <!-- Collect the nav links, forms, and other content
 document.write("            <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">");
 document.write("                <ul class=\"nav navbar-nav\">");
 document.write("                    <li>");
-document.write("                        <a href=\"editProfile.html\">Edit Profile<\/a>");
+document.write("                        <a href=\"form.php\">Edit Profile<\/a>");
 document.write("                    <\/li>");
 //document.write("                    <li>");
 //document.write("                        <a href=\"login.html\">Add a posting<\/a>");

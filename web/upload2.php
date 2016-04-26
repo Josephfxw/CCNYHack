@@ -24,8 +24,8 @@ class ImageManipulator
      * @param string $file OPTIONAL Path to image file or image data as string
      * @return void
      */
-    public function __construct($file)
-    {echo "HHHH";
+    public function __construct($file = null)
+    {
         if (null !== $file) {
             if (is_file($file)) {
                 $this->setImageFile($file);
