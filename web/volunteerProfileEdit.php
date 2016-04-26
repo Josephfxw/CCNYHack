@@ -25,7 +25,7 @@
 <div class="container target">
     <div class="row">
         <div class="col-sm-10">
-             <h1 class="">$_POST["username"]</h1>
+             <h1 class=""><?php echo $_POST["username"]; ?></h1>
 
 
 <br>
