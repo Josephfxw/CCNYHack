@@ -73,7 +73,7 @@
 
 <br>
         </div>
-    
+
     </div>
   <br>
 
@@ -95,15 +95,25 @@
       <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
 
-          Name:<br>
+        <fieldset class="form-group">
+          <label for="name">Name</label>
           <input type="text" name="name" value = "Joe"><br>
-          Public Email:<br>
-          <input type="email" name="email" value = "Josephxwf@gmail.com"><br>
-          Location:<br>
-          <input type="text" name="location" value = "New York"><br>
-          Avaliable Time:<br>
-          <input type="text" name="avaliableTime" value = "Mon-Wed 4-6pm"><br>
+        </fieldset>
 
+        <fieldset class="form-group">
+          <label for="name">Email</label>
+          <input type="email" name="email" value = "Josephxwf@gmail.com"><br>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label for="name">Location</label>
+          <input type="text" name="location" value = "New York"><br>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label for="name">Avaliable Time</label>
+          <input type="text" name="avaliableTime" value = "Mon-Wed 4-6pm"><br>
+        </fieldset>
 
           <input type="submit" value="Save" />
 
