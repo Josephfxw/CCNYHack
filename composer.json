@@ -5,7 +5,7 @@
     "twig/twig": "^1.19",
     "symfony/twig-bridge": "^2.7",
     "herrera-io/silex-pdo": "^1.2",
-    "ext-gd": "*"
+    "gd": "*"
   },
   "require-dev": {
     "heroku/heroku-buildpack-php": "*"
