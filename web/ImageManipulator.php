@@ -67,9 +67,9 @@ class ImageManipulator
                 $this->image = imagecreatefromgif($file);
                 break;
             case IMAGETYPE_JPEG :
-                print "t7";
+                
                 $this->image = imagecreatefromjpeg($file);
-                print "t8";
+
                 break;
             case IMAGETYPE_PNG  :
                 $this->image = imagecreatefrompng($file);
