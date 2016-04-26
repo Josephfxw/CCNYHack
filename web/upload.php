@@ -19,7 +19,7 @@ if ($_FILES['fileToUpload']['error'] > 0) {
         echo "<br />".$newName;
         $destination = 'web/uploads/' . $_FILES['fileToUpload']['name'];
 
-        if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $destination)== True) {
+        if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $destination)=== True) {
             echo "succesfully copied";
         }
     } else {
