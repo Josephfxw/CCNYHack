@@ -93,13 +93,18 @@
           <input type="submit" value="Upload" />
 
       </form>
+      <p style="line-height: 20px"></p>
       <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
 
-          Name: <input type="text" name="name" value = "Joe"><br>
-          Public Email: <input type="email" name="email" value = "Josephxwf@gmail.com"><br>
-          Location:<input type="text" name="location" value = "New York"><br>
-          Avaliable Time:<input type="text" name="avaliableTime" value = "Mon-Wed 4-6pm"><br>
+          Name:<br>
+          <input type="text" name="name" value = "Joe"><br>
+          Public Email:<br>
+          <input type="email" name="email" value = "Josephxwf@gmail.com"><br>
+          Location:<br>
+          <input type="text" name="location" value = "New York"><br>
+          Avaliable Time:<br>
+          <input type="text" name="avaliableTime" value = "Mon-Wed 4-6pm"><br>
 
 
           <input type="submit" value="Save" />
