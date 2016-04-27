@@ -301,6 +301,13 @@ $app->get('/home', function() use($app) {
 );
 });
 ##################################################################################
+$app->post('/volunteerProfile', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('volunteerProfile.twig'
+
+);
+});
+##################################################################################
 $app->post('/volunteerProfileEdit', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   $warning = "";
