@@ -306,7 +306,7 @@ $app->post('/volunteerProfile', function() use($app) {
   $username=$_POST["username"];
   $app['monolog']->addDebug('logging output.');
 
-  $st1 = $app['pdo']->prepare("SELECT name , location, avaliableTime,joinDate, bio FROM volunteerUsersInfo_table WHERE username = $username");
+  $st1 = $app['pdo']->prepare("SELECT name , location, avaliableTime, joinDate, bio FROM volunteerUsersInfo_table WHERE username = '$username' ");
   $st1->execute();
   $row = $st1->fetch(PDO::FETCH_ASSOC);
   //if (row["name"]!=$name || row ["location"] != $location || row["avaliableTime"]!=$avaliableTime){
@@ -487,7 +487,7 @@ $app->post('/volunteerLoginCheck', function() use($app) {
 
            if (count($names)>0){ # table exixts
              #foreach ($names as $name) { #loop through all the username in database
-             $st1 = $app['pdo']->prepare("SELECT name , location, avaliableTime,joinDate, bio FROM volunteerUsersInfo_table WHERE username = '$username'");
+             $st1 = $app['pdo']->prepare("SELECT name , location, avaliableTime, joinDate, bio FROM volunteerUsersInfo_table WHERE username = '$username'");
              $st1->execute();
              $row = $st1->fetch(PDO::FETCH_ASSOC);
              //if (row["name"]!=$name || row ["location"] != $location || row["avaliableTime"]!=$avaliableTime){
