@@ -302,7 +302,8 @@ $app->get('/home', function() use($app) {
 });
 ##################################################################################
 $app->post('/volunteerProfile', function() use($app) {
-  $username = $_POST["username"];
+  
+  $username=$_POST["username"];
   $app['monolog']->addDebug('logging output.');
 
   $st1 = $app['pdo']->prepare("SELECT name , location, avaliableTime,joinDate, bio FROM volunteerUsersInfo_table WHERE username = '$username'");
