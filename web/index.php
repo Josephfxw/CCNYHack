@@ -394,7 +394,7 @@ while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
   $st->execute();
   $row = $st->fetch(PDO::FETCH_ASSOC);
   if (row["name"]!=$name || row ["location"] != $location || row["avaliableTime"]!=$avaliableTime || row["bio"] != $bio){
-    $st1 = $app['pdo']->prepare(" UPDATE volunteerUsersInfo_table set name = '$name' , location ='$location' , avaliableTime ='$avaliableTime',bio = '$bio' WHERE username = '$username' ");
+    $st1 = $app['pdo']->prepare(" UPDATE volunteerUsersInfo_table set name = '$name' , location ='$location' , avaliableTime ='$avaliableTime', bio = '$bio' WHERE username = '$username' ");
     $st1->execute();
      }
 
