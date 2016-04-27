@@ -35,6 +35,7 @@
                <input type="hidden" name="name" value={{name}}>
                <input type="hidden" name="location" value={{location}}>
                <input type="hidden" name="avaliableTime" value={{avaliableTime}}>
+               <input type="hidden" name="bio" value={{bio}}>
                <input type="submit" value="Edit Profile">
                </form>
 
@@ -54,8 +55,8 @@
                 <li class="list-group-item text-muted" contenteditable="false">Profile</li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong class="">Name</strong></span>{{name}}</li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong class="">Joined</strong></span> {{joinDate}}</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Last seen</strong></span> Yesterday</li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Location</strong></span>{{location}}</li>
+          <!--      <li class="list-group-item text-right"><span class="pull-left"><strong class="">Last seen</strong></span> Yesterday</li> -->
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Location</strong></span>{{location}}</li>
               <!--<li class="list-group-item text-right"><span class="pull-left"><strong class="">Role: </strong></span>
 
                       </li>-->
@@ -98,7 +99,7 @@
         <div class="col-sm-9" style="" contenteditable="false">
             <div class="panel panel-default">
                 <div class="panel-heading">Jamie's Bio</div>
-                <div class="panel-body"> I love me, you should too
+                <div class="panel-body">{{bio}}
 
                 </div>
             </div>
