@@ -309,17 +309,17 @@ $app->post('/volunteerProfile', function() use($app) {
   $st1 = $app['pdo']->prepare("SELECT name , location, avaliabletime, joindate, bio FROM volunteerUsersInfo_table WHERE username = '$username' ");
   $st1->execute();
   $row = $st1->fetch(PDO::FETCH_ASSOC);
-  //if (row["name"]!=$name || row ["location"] != $location || row["avaliableTime"]!=$avaliableTime){
-   // $st1 = $app['pdo']->prepare(" UPDATE volunteerUsersInfo_table set name = '$name' , location ='$location' , avaliableTime ='$avaliableTime' WHERE username = '$username' ");
+  //if (row["name"]!=$name || row ["location"] != $location || row["avaliabletime"]!=$avaliabletime){
+   // $st1 = $app['pdo']->prepare(" UPDATE volunteerUsersInfo_table set name = '$name' , location ='$location' , avaliabletime ='$avaliabletime' WHERE username = '$username' ");
    // $st1->execute();
    //  }
      $name = $row["name"];
      $location = $row["location"];
-     $avaliableTime = $row["avaliabletime"];
-     $joinDate = $row["joindate"];
+     $avaliabletime = $row["avaliabletime"];
+     $joindate = $row["joindate"];
      $bio =$row['bio'];
      return $app['twig']->render('volunteerProfile.twig', array(
-     'username'=>$username,'name' => $name, 'location' =>$location, 'avaliableTime' =>$avaliableTime, 'joinDate' =>$joinDate,'bio' =>$bio
+     'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' =>$joindate,'bio' =>$bio
    ));
 
 
@@ -332,7 +332,7 @@ $app->post('/volunteerProfileEdit', function() use($app) {
   $name = $_POST["name"];
   $email = $_POST["email"];
   $location = $_POST["location"];
-  $avaliableTime = $_POST["avaliableTime"];
+  $avaliabletime = $_POST["avaliabletime"];
   $bio = $_POST["bio"];
 
 if ($_FILES['fileToUpload'] !== null){
@@ -390,30 +390,30 @@ while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
 */
 //if (count($names)>0){ # table exixts
   #foreach ($names as $name) { #loop through all the username in database
-  $st = $app['pdo']->prepare("SELECT name , location, avaliableTime, bio FROM volunteerUsersInfo_table WHERE username = '$username'");
+  $st = $app['pdo']->prepare("SELECT name , location, avaliabletime, bio FROM volunteerUsersInfo_table WHERE username = '$username'");
   $st->execute();
   $row = $st->fetch(PDO::FETCH_ASSOC);
-  if (row["name"]!=$name || row ["location"] != $location || row["avaliableTime"]!=$avaliableTime || row["bio"] != $bio){
-    $st1 = $app['pdo']->prepare(" UPDATE volunteerUsersInfo_table set name = '$name' , location ='$location' , avaliableTime ='$avaliableTime', bio = '$bio' WHERE username = '$username' ");
+  if (row["name"]!=$name || row ["location"] != $location || row["avaliabletime"]!=$avaliabletime || row["bio"] != $bio){
+    $st1 = $app['pdo']->prepare(" UPDATE volunteerUsersInfo_table set name = '$name' , location ='$location' , avaliabletime ='$avaliabletime', bio = '$bio' WHERE username = '$username' ");
     $st1->execute();
      }
 
      return $app['twig']->render('volunteerProfileEdit.twig', array(
-     'username'=>$username,'name' => $name, 'location' =>$location, 'avaliableTime' =>$avaliableTime, 'warning' => $warning,'bio' =>$bio
+     'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'warning' => $warning,'bio' =>$bio
    ));
 
  //}
 /*
  else { # table not exixt, create volunteerUsersInfo_table
-   $st2 = $app['pdo']->prepare('CREATE volunteerUsersInfo_table (username VARCHAR(60), name VARCHAR(60),location VARCHAR(60), avaliableTime VARCHAR(60) ');
+   $st2 = $app['pdo']->prepare('CREATE volunteerUsersInfo_table (username VARCHAR(60), name VARCHAR(60),location VARCHAR(60), avaliabletime VARCHAR(60) ');
    $st2->execute();
 
-   $st3 = $app['pdo']->prepare("INSERT into volunteerUsersInfo_table  (username, name ,location, avaliableTime) values ('$username','$name','$location','$avaliableTime')");
+   $st3 = $app['pdo']->prepare("INSERT into volunteerUsersInfo_table  (username, name ,location, avaliabletime) values ('$username','$name','$location','$avaliabletime')");
    $st3->execute();
 
 
   return $app['twig']->render('volunteerProfileEdit.html', array(
-  'username'=>$username,'name' => $name, 'location' =>$location, 'avaliableTime' =>$avaliableTime
+  'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime
 ));
 }
 */
@@ -439,9 +439,9 @@ $app->post('/volunteerLoginCheck', function() use($app) {
   $password=$_POST["password"];
   $name = "Add you name";
   $location = "Add your location";
-  $avaliableTime ="Add your avaliable time";;
+  $avaliabletime ="Add your avaliable time";;
   $bio = "Add your bio";
-  $joinDate = date("Y-m-d");
+  $joindate = date("Y-m-d");
 
 
   $st = $app['pdo']->prepare('SELECT * FROM volunteerUsers_table');
@@ -487,33 +487,33 @@ $app->post('/volunteerLoginCheck', function() use($app) {
 
            if (count($names)>0){ # table exixts
              #foreach ($names as $name) { #loop through all the username in database
-             $st1 = $app['pdo']->prepare("SELECT name , location, avaliableTime, joinDate, bio FROM volunteerUsersInfo_table WHERE username = '$username'");
+             $st1 = $app['pdo']->prepare("SELECT name , location, avaliabletime, joindate, bio FROM volunteerUsersInfo_table WHERE username = '$username'");
              $st1->execute();
              $row = $st1->fetch(PDO::FETCH_ASSOC);
-             //if (row["name"]!=$name || row ["location"] != $location || row["avaliableTime"]!=$avaliableTime){
-              // $st1 = $app['pdo']->prepare(" UPDATE volunteerUsersInfo_table set name = '$name' , location ='$location' , avaliableTime ='$avaliableTime' WHERE username = '$username' ");
+             //if (row["name"]!=$name || row ["location"] != $location || row["avaliabletime"]!=$avaliabletime){
+              // $st1 = $app['pdo']->prepare(" UPDATE volunteerUsersInfo_table set name = '$name' , location ='$location' , avaliabletime ='$avaliabletime' WHERE username = '$username' ");
               // $st1->execute();
               //  }
                 $name = $row["name"];
                 $location = $row["location"];
-                $avaliableTime = $row["avaliableTime"];
-                $joinDate = $row["joinDate"];
+                $avaliabletime = $row["avaliabletime"];
+                $joindate = $row["joindate"];
                 $bio =$row['bio'];
                 return $app['twig']->render('volunteerProfile.twig', array(
-                'username'=>$username,'name' => $name, 'location' =>$location, 'avaliableTime' =>$avaliableTime, 'joinDate' =>$joinDate,'bio' =>$bio
+                'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' =>$joindate,'bio' =>$bio
               ));
 
             }
 
             else { # table not exixt, create volunteerUsersInfo_table
-              $st2 = $app['pdo']->prepare('CREATE table volunteerUsersInfo_table (username VARCHAR(60), name VARCHAR(60),location VARCHAR(60), avaliableTime VARCHAR(60), joinDate VARCHAR(60),bio VARCHAR(120)) ');
+              $st2 = $app['pdo']->prepare('CREATE table volunteerUsersInfo_table (username VARCHAR(60), name VARCHAR(60),location VARCHAR(60), avaliabletime VARCHAR(60), joindate VARCHAR(60),bio VARCHAR(120)) ');
               $st2->execute();
 
-              $st3 = $app['pdo']->prepare("INSERT into volunteerUsersInfo_table  (username, name ,location, avaliableTime, joinDate,bio) values ('$username','$name','$location','$avaliableTime','$joinDate','add nn')");
+              $st3 = $app['pdo']->prepare("INSERT into volunteerUsersInfo_table  (username, name ,location, avaliabletime, joindate,bio) values ('$username','$name','$location','$avaliabletime','$joindate','add nn')");
               $st3->execute();
 
              return $app['twig']->render('volunteerProfile.twig', array(
-             'username'=>$username,'name' => $name, 'location' =>$location, 'avaliableTime' =>$avaliableTime, 'joinDate' => $joinDate,'bio' =>$bio
+             'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' => $joindate,'bio' =>$bio
            ));
 }
 
