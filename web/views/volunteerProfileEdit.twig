@@ -45,7 +45,9 @@
     <div class="panel-heading">Public Profile</div>
     <div>
       <h5> Profile picture</h5>
-      <img src="uploads/bird.jpeg" alt="Smiley face" height="150" width="150">
+      <img src="{{photopath}}" alt="Profile Picture" height="150" width="150">
+
+      <!-- this form handles the upload photo button-->
       <form enctype="multipart/form-data" method="post" action="volunteerProfileEdit">
 
           <fieldset class="form-group">
@@ -53,9 +55,21 @@
           <span style="color:red;">{{ warning }}</span>
           </fieldset>
 
+          <input type="hidden" name="username" value={{username}}>
+
+          <input type="hidden" name="name" value = "{{name}}"><br>
+
+          <input type="hidden" name="location" value = "{{location}}"><br>
+
+          <input type="hidden" name="avaliabletime" value = "{{avaliabletime}}"><br>
+
+          <input type="hidden"  name="bio" value = "{{bio}}"><br>
+
           <button type="submit" class="btn btn-primary">Upload</button>
 
       </form>
+
+
       <p style="line-height: 20px"></p>
       <form method="post" action="volunteerProfileEdit">
 

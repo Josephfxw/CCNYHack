@@ -334,6 +334,8 @@ $app->post('/volunteerProfileEdit', function() use($app) {
   $location = $_POST["location"];
   $avaliabletime = $_POST["avaliabletime"];
   $bio = $_POST["bio"];
+  $photopath ="";
+
 
 if ($_FILES['fileToUpload'] !== null){
   // include ImageManipulator class
@@ -365,7 +367,8 @@ if ($_FILES['fileToUpload'] !== null){
           // center cropping to 200x130
           $newImage = $manipulator->crop($x1, $y1, $x2, $y2);
           // saving file to uploads folder
-          $manipulator->save('uploads/' . $_FILES['fileToUpload']['name']);
+          $photopath ='uploads/'. $newNamePrefix . $_FILES['fileToUpload']['name'];
+          $manipulator->save($path);
           //echo 'Done ...';
       }
       else {
@@ -390,16 +393,16 @@ while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
 */
 //if (count($names)>0){ # table exixts
   #foreach ($names as $name) { #loop through all the username in database
-  $st = $app['pdo']->prepare("SELECT name , location, avaliabletime, bio FROM volunteerUsersInfo_table WHERE username = '$username'");
+  $st = $app['pdo']->prepare("SELECT name , location, avaliabletime, bio , photopath FROM volunteerUsersInfo_table WHERE username = '$username'");
   $st->execute();
   $row = $st->fetch(PDO::FETCH_ASSOC);
-  if (row["name"]!=$name || row ["location"] != $location || row["avaliabletime"]!=$avaliabletime || row["bio"] != $bio){
-    $st1 = $app['pdo']->prepare(" UPDATE volunteerUsersInfo_table set name = '$name' , location ='$location' , avaliabletime ='$avaliabletime', bio = '$bio' WHERE username = '$username' ");
+  if (row["name"]!=$name || row ["location"] != $location || row["avaliabletime"]!=$avaliabletime || row["bio"] != $bio || row["photopath"] != $photopath){
+    $st1 = $app['pdo']->prepare(" UPDATE volunteerUsersInfo_table set name = '$name' , location ='$location' , avaliabletime ='$avaliabletime', bio = '$bio',photopath = '$photopath' WHERE username = '$username' ");
     $st1->execute();
      }
 
      return $app['twig']->render('volunteerProfileEdit.twig', array(
-     'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'warning' => $warning,'bio' =>$bio
+     'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'warning' => $warning,'bio' =>$bio, 'photopath'=> $photopath
    ));
 
  //}
