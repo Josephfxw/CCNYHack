@@ -368,7 +368,7 @@ if ($_FILES['fileToUpload'] !== null){
           $newImage = $manipulator->crop($x1, $y1, $x2, $y2);
           // saving file to uploads folder
           $photopath ='uploads/'. $newNamePrefix . $_FILES['fileToUpload']['name'];
-          $manipulator->save($path);
+          $manipulator->save($photopath);
           //echo 'Done ...';
       }
       else {
