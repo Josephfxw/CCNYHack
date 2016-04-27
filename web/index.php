@@ -302,10 +302,26 @@ $app->get('/home', function() use($app) {
 });
 ##################################################################################
 $app->post('/volunteerProfile', function() use($app) {
+  $username = $_POST["username"];
   $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('volunteerProfile.twig'
 
-);
+  $st1 = $app['pdo']->prepare("SELECT name , location, avaliableTime,joinDate, bio FROM volunteerUsersInfo_table WHERE username = '$username'");
+  $st1->execute();
+  $row = $st1->fetch(PDO::FETCH_ASSOC);
+  //if (row["name"]!=$name || row ["location"] != $location || row["avaliableTime"]!=$avaliableTime){
+   // $st1 = $app['pdo']->prepare(" UPDATE volunteerUsersInfo_table set name = '$name' , location ='$location' , avaliableTime ='$avaliableTime' WHERE username = '$username' ");
+   // $st1->execute();
+   //  }
+     $name = $row["name"];
+     $location = $row["location"];
+     $avaliableTime = $row["avaliableTime"];
+     $joinDate = $row["joinDate"];
+     $bio =$row['bio'];
+     return $app['twig']->render('volunteerProfile.twig', array(
+     'username'=>$username,'name' => $name, 'location' =>$location, 'avaliableTime' =>$avaliableTime, 'joinDate' =>$joinDate,'bio' =>$bio
+   ));
+
+
 });
 ##################################################################################
 $app->post('/volunteerProfileEdit', function() use($app) {
