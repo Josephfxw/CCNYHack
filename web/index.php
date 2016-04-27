@@ -373,7 +373,7 @@ while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
     $st1->execute();
      }
 
-     return $app['twig']->render('volunteerProfileEdit.html', array(
+     return $app['twig']->render('volunteerProfileEdit.twig', array(
      'username'=>$username,'name' => $name, 'location' =>$location, 'avaliableTime' =>$avaliableTime, 'warning' => $warning,'bio' =>$bio
    ));
 
@@ -412,10 +412,10 @@ $app->post('/volunteerLoginCheck', function() use($app) {
 
   $username=$_POST["username"];
   $password=$_POST["password"];
-  $name = "Click 'Edit Profile'";
-  $location = "Click 'Edit Profile'to add your bio here";
-  $avaliableTime ="Click 'Edit Profile'";;
-  $bio = "Click edit button to add your bio here";
+  $name = "Click 'Edit Profile' to add your name.";
+  $location = "Click 'Edit Profile'to add your location.";
+  $avaliableTime ="Click 'Edit Profile' to add your avaliable time.";;
+  $bio = "Click edit button to add your bio.";
   $joinDate = date("Y-m-d");
 
 
