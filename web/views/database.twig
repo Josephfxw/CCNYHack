@@ -5,7 +5,7 @@
 
 <ul>
 {% for n in names %}
-  <input type="text" class="form-control" name="location" value = {{ n.name|raw }}>
+  <input type="text" class="form-control" name="location" value = {{ n.name|escape }}>
 {% else %}
   <li>Nameless!</li>
 {% endfor %}
