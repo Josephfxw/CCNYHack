@@ -42,10 +42,10 @@
   <br>
 
   <div class="panel panel-default" style= "width:50%">
-    <div class="panel-heading">Public Profile</div>
+    <div class="panel-heading"><h3>Public Profile</h3></div>
     <div>
       <h5> Profile picture</h5>
-      <img src="{{photopath}}" alt="Profile Picture" height="150" width="150">
+      <img src="{{photopath}}" alt="Add a Profile Picture." height="150" width="150">
 
       <!-- this form handles the upload photo button-->
       <form enctype="multipart/form-data" method="post" action="volunteerProfileEdit">
@@ -57,13 +57,13 @@
 
           <input type="hidden" name="username" value={{username}}>
 
-          <input type="hidden" name="name" value = "{{name}}"><br>
+          <input type="hidden" name="name" value = "{{name}}">
 
-          <input type="hidden" name="location" value = "{{location}}"><br>
+          <input type="hidden" name="location" value = "{{location}}">
 
-          <input type="hidden" name="avaliabletime" value = "{{avaliabletime}}"><br>
+          <input type="hidden" name="avaliabletime" value = "{{avaliabletime}}">
 
-          <input type="hidden"  name="bio" value = "{{bio}}"><br>
+          <input type="hidden"  name="bio" value = "{{bio}}">
 
           <button type="submit" class="btn btn-primary">Upload</button>
 
