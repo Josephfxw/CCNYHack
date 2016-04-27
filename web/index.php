@@ -509,7 +509,7 @@ $app->post('/volunteerLoginCheck', function() use($app) {
               $st2 = $app['pdo']->prepare('CREATE table volunteerUsersInfo_table (username VARCHAR(60), name VARCHAR(60),location VARCHAR(60), avaliableTime VARCHAR(60), joinDate VARCHAR(60),bio VARCHAR(120)) ');
               $st2->execute();
 
-              $st3 = $app['pdo']->prepare("INSERT into volunteerUsersInfo_table  (username, name ,location, avaliableTime, joinDate,bio) values ('$username','$name','$location','$avaliableTime','$joinDate','$bio')");
+              $st3 = $app['pdo']->prepare("INSERT into volunteerUsersInfo_table  (username, name ,location, avaliableTime, joinDate,bio) values ('$','$','$','$','$','$')");
               $st3->execute();
 
              return $app['twig']->render('volunteerProfile.twig', array(
