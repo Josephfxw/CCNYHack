@@ -391,6 +391,7 @@ while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
 //if (count($names)>0){ # table exixts
   #foreach ($names as $name) { #loop through all the username in database
   $st = $app['pdo']->prepare("SELECT name , location, avaliableTime, bio FROM volunteerUsersInfo_table WHERE username = '$username'");
+  $st->execute();
   $row = $st->fetch(PDO::FETCH_ASSOC);
   if (row["name"]!=$name || row ["location"] != $location || row["avaliableTime"]!=$avaliableTime || row["bio"] != $bio){
     $st1 = $app['pdo']->prepare(" UPDATE volunteerUsersInfo_table set name = '$name' , location ='$location' , avaliableTime ='$avaliableTime',bio = '$bio' WHERE username = '$username' ");
