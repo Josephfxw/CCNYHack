@@ -373,7 +373,7 @@ while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
      }
 
      return $app['twig']->render('volunteerProfileEdit.html', array(
-     'username'=>$username,'name' => $name, 'location' =>$location, 'avaliableTime' =>$avaliableTime
+     'username'=>$username,'name' => $name, 'location' =>$location, 'avaliableTime' =>$avaliableTime, 'warning' => $warning
    ));
 
  //}
