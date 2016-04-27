@@ -306,7 +306,7 @@ $app->post('/volunteerProfile', function() use($app) {
   $username=$_POST["username"];
   $app['monolog']->addDebug('logging output.');
 
-  $st1 = $app['pdo']->prepare("SELECT name , location, avaliabletime, joindate, bio FROM volunteerUsersInfo_table WHERE username = '$username' ");
+  $st1 = $app['pdo']->prepare("SELECT name , location, avaliabletime, joindate, bio, photopath FROM volunteerUsersInfo_table WHERE username = '$username' ");
   $st1->execute();
   $row = $st1->fetch(PDO::FETCH_ASSOC);
   //if (row["name"]!=$name || row ["location"] != $location || row["avaliabletime"]!=$avaliabletime){
@@ -318,8 +318,10 @@ $app->post('/volunteerProfile', function() use($app) {
      $avaliabletime = $row["avaliabletime"];
      $joindate = $row["joindate"];
      $bio =$row['bio'];
+     $photopath = $row['photopath'];
+
      return $app['twig']->render('volunteerProfile.twig', array(
-     'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' =>$joindate,'bio' =>$bio
+     'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' =>$joindate,'bio' =>$bio, 'photopath' => $photopath 
    ));
 
 
