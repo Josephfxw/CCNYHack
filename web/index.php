@@ -507,8 +507,12 @@ $app->post('/volunteerLoginCheck', function() use($app) {
                 $joindate = $row["joindate"];
                 $bio =$row['bio'];
                 $photopath =$row['photopath'];
+                return $app['twig']->render('volunteerProfile.twig', array(
+                'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' =>$joindate,'bio' =>$bio, 'photopath'=> $photopath
+              ));
               }
-
+                $st3 = $app['pdo']->prepare("INSERT into volunteerUsersInfo_table  (username, name ,location, avaliabletime, joindate, bio, photopath ) values ('$username','$name','$location','$avaliabletime','$joindate','$bio', '$photopath')");
+                $st3->execute();
                 return $app['twig']->render('volunteerProfile.twig', array(
                 'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' =>$joindate,'bio' =>$bio, 'photopath'=> $photopath
               ));
