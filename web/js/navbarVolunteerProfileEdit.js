@@ -20,7 +20,7 @@ document.write("                    <\/li>");
 
 document.write("                    <li>");
 document.write(" <form action=\"volunteerProfile\" method = \"post\">");
-document.write(" <input type=\"hidden\" name=\"username\" value=\"{{username}}\">");
+document.write(" <input type=\"hidden\" name=\"username\" value="{{username}}">");
 document.write(" <input type=\"submit\" value=\"Edit Profile\">");
 document.write(" <\/form>");
 document.write("                    <\/li>");
