@@ -321,7 +321,7 @@ $app->post('/volunteerProfile', function() use($app) {
      $photopath = $row['photopath'];
 
      return $app['twig']->render('volunteerProfile.twig', array(
-     'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' =>$joindate,'bio' =>$bio, 'photopath' => $photopath 
+     'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' =>$joindate,'bio' =>$bio, 'photopath' => $photopath
    ));
 
 
@@ -493,9 +493,10 @@ $app->post('/volunteerLoginCheck', function() use($app) {
 
            if (count($names)>0){ # table exixts
              #foreach ($names as $name) { #loop through all the username in database
-             $st1 = $app['pdo']->prepare("SELECT name , location, avaliabletime, joindate, bio, photopath FROM volunteerUsersInfo_table WHERE username = '$username'");
+             $st1 = $app['pdo']->prepare("SELECT username, name , location, avaliabletime, joindate, bio, photopath FROM volunteerUsersInfo_table WHERE username = '$username'");
              $st1->execute();
              $row = $st1->fetch(PDO::FETCH_ASSOC);
+             if ($row['username'] !== null){  // check if user is the first time login user
              //if (row["name"]!=$name || row ["location"] != $location || row["avaliabletime"]!=$avaliabletime){
               // $st1 = $app['pdo']->prepare(" UPDATE volunteerUsersInfo_table set name = '$name' , location ='$location' , avaliabletime ='$avaliabletime' WHERE username = '$username' ");
               // $st1->execute();
@@ -506,6 +507,7 @@ $app->post('/volunteerLoginCheck', function() use($app) {
                 $joindate = $row["joindate"];
                 $bio =$row['bio'];
                 $photopath =$row['photopath'];
+              }
 
                 return $app['twig']->render('volunteerProfile.twig', array(
                 'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' =>$joindate,'bio' =>$bio, 'photopath'=> $photopath
