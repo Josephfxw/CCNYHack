@@ -21,6 +21,9 @@
 </head>
     <body>
         <script src="js/navbarVolunteer.js"></script>
+
+
+
     <hr class="">
 <div class="container target">
     <div class="row">
@@ -28,7 +31,10 @@
 
              <!-- edit volunteer profile button-->
                <form action="volunteerProfileEdit" method = "post">
-               <input type="hidden" name="username" value={{name}}>
+               <input type="hidden" name="username" value={{username}}>
+               <input type="hidden" name="name" value={{name}}>
+               <input type="hidden" name="location" value={{location}}>
+               <input type="hidden" name="avaliableTime" value={{avaliableTime}}>
                <input type="submit" value="Edit Profile">
                </form>
 
@@ -37,7 +43,7 @@
         </div>
         <div class="col-sm-2 img-padding" align="left">
         <a href="/users" class="pull-left"><img title="profile image" class="img-circle img-responsive" src="http://ichef.bbci.co.uk/news/976/media/images/83351000/jpg/_83351965_explorer273lincolnshirewoldssouthpicturebynicholassilkstone.jpg"></a>
-        <h1 style= "text-align:center">{{name}}</h1>
+        <h1 style= "text-align:center">{{username}}</h1>
           </div>
     </div>
   <br>
@@ -46,9 +52,10 @@
             <!--left col-->
             <ul class="list-group">
                 <li class="list-group-item text-muted" contenteditable="false">Profile</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Joined</strong></span> 2.13.2014</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Name</strong></span>{{name}}</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Joined</strong></span> {{date}}</li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong class="">Last seen</strong></span> Yesterday</li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Location</strong></span>New York, New York</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Location</strong></span>{{location}}</li>
               <!--<li class="list-group-item text-right"><span class="pull-left"><strong class="">Role: </strong></span>
 
                       </li>-->
@@ -57,7 +64,7 @@
              <div class="panel-heading">Available Days
 
                 </div>
-                <div class="panel-body"><i style="color:green" class="fa fa-check-square"></i> Mon-Wed 4-6pm
+                <div class="panel-body"><i style="color:green" class="fa fa-check-square"></i> {{avaliableTime}}
 
                 </div>
             </div>

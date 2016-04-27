@@ -27,7 +27,7 @@
 <div class="container target">
     <div class="row">
         <div class="col-sm-10">
-             <h1 class="">{{name}}</h1>
+             <h1 class="">{{username}}</h1>
 
 
 <br>
@@ -57,22 +57,18 @@
 
         <fieldset class="form-group">
           <label for="name">Name</label> <br>
-          <input type="text" class="form-control" name="name" value = "Joe"><br>
+          <input type="text" class="form-control" name="name" value = {{name}}><br>
         </fieldset>
 
-        <fieldset class="form-group">
-          <label for="name">Email</label><br>
-          <input type="email" class="form-control" name="email" value = "Josephxwf@gmail.com"><br>
-        </fieldset>
 
         <fieldset class="form-group">
           <label for="name">Location</label><br>
-          <input type="text" class="form-control" name="location" value = "New York"><br>
+          <input type="text" class="form-control" name="location" value = {{location}}><br>
         </fieldset>
 
         <fieldset class="form-group">
           <label for="name">Avaliable Time</label><br>
-          <input type="text" class="form-control" name="avaliableTime" value = "Mon-Wed 4-6pm"><br>
+          <input type="text" class="form-control" name="avaliableTime" value = {{avaliableTime}}><br>
         </fieldset>
 
           <button type="submit" class="btn btn-primary">Save</button>
