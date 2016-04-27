@@ -24,7 +24,7 @@
         <script src="js/navbarVolunteerProfileEdit.js"></script>
 
         <form action="volunteerProfile" method = "post">
-        <input type="hidden" name="username" value="joe">
+        <input type="hidden" name="username" value={{username}}>
         <input type="submit" value="Back to Profile">
         </form>
 
@@ -59,7 +59,8 @@
       <p style="line-height: 20px"></p>
       <form method="post" action="volunteerProfileEdit">
 
-
+        <input type="hidden" name="username" value={{username}}>
+        
         <fieldset class="form-group">
           <label for="name">Name</label> <br>
           <input type="text" class="form-control" name="name" value = "{{name}}"><br>
