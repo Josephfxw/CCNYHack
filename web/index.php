@@ -306,7 +306,7 @@ $app->post('/volunteerProfile', function() use($app) {
   $username=$_POST["username"];
   $app['monolog']->addDebug('logging output.');
 
-  $st1 = $app['pdo']->prepare("SELECT name , location, avaliableTime,joinDate, bio FROM volunteerUsersInfo_table WHERE username = 'joe'");
+  $st1 = $app['pdo']->prepare("SELECT name , location, avaliableTime,joinDate, bio FROM volunteerUsersInfo_table WHERE username = $username");
   $st1->execute();
   $row = $st1->fetch(PDO::FETCH_ASSOC);
   //if (row["name"]!=$name || row ["location"] != $location || row["avaliableTime"]!=$avaliableTime){
