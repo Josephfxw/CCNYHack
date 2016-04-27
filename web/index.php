@@ -437,10 +437,10 @@ $app->post('/volunteerLoginCheck', function() use($app) {
 
   $username=$_POST["username"];
   $password=$_POST["password"];
-  $name = "Add";
-  $location = "Add";
-  $avaliableTime ="Add";;
-  $bio = "Add";
+  $name = "Add you name";
+  $location = "Add your location";
+  $avaliableTime ="Add your avaliable time";;
+  $bio = "Add your bio";
   $joinDate = date("Y-m-d");
 
 
