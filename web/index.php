@@ -61,7 +61,7 @@ $app->post('/volunteerUserCheck', function() use($app) {
   $email=$_POST["email"];
   $password1=$_POST["password1"];
   $password2=$_POST["password2"];
-  $password9= $_POST["password9"];
+
   $warning1 = "";
   $warning2 = "";
   $warning3 = "";
@@ -301,11 +301,55 @@ $app->get('/home', function() use($app) {
 );
 });
 ##################################################################################
-$app->post('/volunteerProfileEdit.html', function() use($app) {
+$app->post('/volunteerProfileEdit', function() use($app) {
   $app['monolog']->addDebug('logging output.');
+  $warning = "";
+  $username = $_POST["username"];
+
+
+if ($_FILES['fileToUpload'] !== null){
+  // include ImageManipulator class
+  require_once('ImageManipulator.php');
+
+  if ($_FILES['fileToUpload']['error'] > 0) {
+      //echo "Error: " . $_FILES['fileToUpload']['error'] . "<br />";
+      $warning = "No pictures.";
+  } else {
+      // array of valid extensions
+      $validExtensions = array('.jpg', '.jpeg', '.gif', '.png');
+      // get extension of the uploaded file
+      $fileExtension = strrchr($_FILES['fileToUpload']['name'], ".");
+      // check if file Extension is on the list of allowed ones
+      if (in_array($fileExtension, $validExtensions)) {
+          $newNamePrefix = time() . '_';
+          $manipulator = new ImageManipulator($_FILES['fileToUpload']['tmp_name']);
+          $width  = $manipulator->getWidth();
+          $height = $manipulator->getHeight();
+          $centreX = round($width / 2);
+          $centreY = round($height / 2);
+          // our dimensions will be 200x130
+          $x1 = $centreX - 100; // 200 / 2
+          $y1 = $centreY - 65; // 130 / 2
+
+          $x2 = $centreX + 100; // 200 / 2
+          $y2 = $centreY + 65; // 130 / 2
+
+          // center cropping to 200x130
+          $newImage = $manipulator->crop($x1, $y1, $x2, $y2);
+          // saving file to uploads folder
+          $manipulator->save('uploads/' . $_FILES['fileToUpload']['name']);
+          //echo 'Done ...';
+      }
+      else {
+          //echo 'You must upload an image...';
+          $warning = "No pictures.";
+      }
+  }
+}
+
 
   return $app['twig']->render('volunteerProfileEdit.html', array(
-  'name' => $_POST["username"]
+  'name' => $username, warning => $warning
 ));
 });
 
@@ -421,6 +465,7 @@ $app->post('/helpSeekerLoginCheck', function() use($app) {
 
 
 });
+/////////////////////////////////////////////////////////////////////////////////////
 
 
 $app->run();
