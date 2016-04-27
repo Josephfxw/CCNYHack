@@ -25,3 +25,14 @@ After you add dependency in composer.json, you need run command "composer update
 need add gd dependency to composer.json to use ImageManipulator
 check errors:heroku logs
 run terminal:heroku run bash
+
+edit database in terminal:
+heroku pg:psql
+psql (9.3.2, server 9.3.3)
+SSL connection (cipher: DHE-RSA-AES256-SHA, bits: 256)
+Type "help" for help.
+=> create table test_table (id integer, name text);
+CREATE TABLE
+=> insert into test_table values (1, 'hello database');
+INSERT 0 1
+=> \q
