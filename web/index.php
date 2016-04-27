@@ -334,7 +334,7 @@ $app->post('/volunteerProfileEdit', function() use($app) {
   $location = $_POST["location"];
   $avaliabletime = $_POST["avaliabletime"];
   $bio = $_POST["bio"];
-  $photopath ="";
+  $photopath =$_POST["photopath"];
 
 
 if ($_FILES['fileToUpload'] !== null){
@@ -444,6 +444,7 @@ $app->post('/volunteerLoginCheck', function() use($app) {
   $location = "Add your location";
   $avaliabletime ="Add your avaliable time";;
   $bio = "Add your bio";
+  $photopath ="";
   $joindate = date("Y-m-d");
 
 
@@ -490,7 +491,7 @@ $app->post('/volunteerLoginCheck', function() use($app) {
 
            if (count($names)>0){ # table exixts
              #foreach ($names as $name) { #loop through all the username in database
-             $st1 = $app['pdo']->prepare("SELECT name , location, avaliabletime, joindate, bio FROM volunteerUsersInfo_table WHERE username = '$username'");
+             $st1 = $app['pdo']->prepare("SELECT name , location, avaliabletime, joindate, bio, photopath FROM volunteerUsersInfo_table WHERE username = '$username'");
              $st1->execute();
              $row = $st1->fetch(PDO::FETCH_ASSOC);
              //if (row["name"]!=$name || row ["location"] != $location || row["avaliabletime"]!=$avaliabletime){
@@ -502,21 +503,23 @@ $app->post('/volunteerLoginCheck', function() use($app) {
                 $avaliabletime = $row["avaliabletime"];
                 $joindate = $row["joindate"];
                 $bio =$row['bio'];
+                $photopath =$row['photopath'];
+
                 return $app['twig']->render('volunteerProfile.twig', array(
-                'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' =>$joindate,'bio' =>$bio
+                'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' =>$joindate,'bio' =>$bio, 'photopath'=> $photopath
               ));
 
             }
 
             else { # table not exixt, create volunteerUsersInfo_table
-              $st2 = $app['pdo']->prepare('CREATE table volunteerUsersInfo_table (username VARCHAR(60), name VARCHAR(60),location VARCHAR(60), avaliabletime VARCHAR(60), joindate VARCHAR(60),bio VARCHAR(120)) ');
+              $st2 = $app['pdo']->prepare('CREATE table volunteerUsersInfo_table (username VARCHAR(60), name VARCHAR(60),location VARCHAR(60), avaliabletime VARCHAR(60), joindate VARCHAR(60),bio VARCHAR(120), photopath VARCHAR(120)) ');
               $st2->execute();
 
-              $st3 = $app['pdo']->prepare("INSERT into volunteerUsersInfo_table  (username, name ,location, avaliabletime, joindate,bio) values ('$username','$name','$location','$avaliabletime','$joindate','add nn')");
+              $st3 = $app['pdo']->prepare("INSERT into volunteerUsersInfo_table  (username, name ,location, avaliabletime, joindate, bio, photopath ) values ('$username','$name','$location','$avaliabletime','$joindate','$bio', '$photopath')");
               $st3->execute();
 
              return $app['twig']->render('volunteerProfile.twig', array(
-             'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' => $joindate,'bio' =>$bio
+             'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' => $joindate,'bio' =>$bio, 'photopath'=> $photopath
            ));
 }
 
