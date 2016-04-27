@@ -399,7 +399,7 @@ while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
   $st->execute();
   $row = $st->fetch(PDO::FETCH_ASSOC);
   if (row["name"]!=$name || row ["location"] != $location || row["avaliabletime"]!=$avaliabletime || row["bio"] != $bio || row["photopath"] != $photopath){
-    $st1 = $app['pdo']->prepare(" UPDATE volunteerUsersInfo_table set name = '$name' , location ='$location' , avaliabletime ='$avaliabletime', bio = '$bio',photopath = '$photopath' WHERE username = '$username' ");
+    $st1 = $app['pdo']->prepare(" UPDATE volunteerUsersInfo_table set name = '$name' , location ='$location' , avaliabletime ='$avaliabletime', bio = '$bio', photopath = '$photopath' WHERE username = '$username' ");
     $st1->execute();
      }
 
