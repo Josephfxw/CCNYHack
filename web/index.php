@@ -56,7 +56,7 @@ $app->get('/signup.html', function() use($app) {
 });
 ###################################################################################################
 # checking if the new user exists
-$app->post('/volunteerUserCheck', function() use($app) {
+$app->post('/volunteerUserSignUpCheck', function() use($app) {
   $username=$_POST["username"]; # get username from the submit
   $email=$_POST["email"];
   $password1=$_POST["password1"];
@@ -164,7 +164,7 @@ $app->post('/volunteerUserCheck', function() use($app) {
 #####################################################################################################
 
 # checking if the asststance user exists
-$app->post('/UserForAssistanceCheck', function() use($app) {
+$app->post('/helpSeekerSignUpCheck', function() use($app) {
   $username=$_POST["username2"];
   $email=$_POST["email2"];
   $password3=$_POST["password3"];
@@ -327,6 +327,32 @@ $app->post('/volunteerProfile', function() use($app) {
 
 });
 ##################################################################################
+$app->post('/helpSeekerProfile', function() use($app) {
+
+  $username=$_POST["username"];
+  $app['monolog']->addDebug('logging output.');
+
+  $st1 = $app['pdo']->prepare("SELECT name , location, avaliabletime, joindate, bio, photopath FROM volunteerUsersInfo_table WHERE username = '$username' ");
+  $st1->execute();
+  $row = $st1->fetch(PDO::FETCH_ASSOC);
+  //if (row["name"]!=$name || row ["location"] != $location || row["avaliabletime"]!=$avaliabletime){
+   // $st1 = $app['pdo']->prepare(" UPDATE volunteerUsersInfo_table set name = '$name' , location ='$location' , avaliabletime ='$avaliabletime' WHERE username = '$username' ");
+   // $st1->execute();
+   //  }
+     $name = $row["name"];
+     $location = $row["location"];
+     $avaliabletime = $row["avaliabletime"];
+     $joindate = $row["joindate"];
+     $bio =$row['bio'];
+     $photopath = $row['photopath'];
+
+     return $app['twig']->render('helpSeekerProfile.twig', array(
+     'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' =>$joindate,'bio' =>$bio, 'photopath' => $photopath
+   ));
+
+
+});
+##################################################################################
 $app->post('/volunteerProfileEdit', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   $warning = "";
@@ -404,6 +430,104 @@ while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
      }
 
      return $app['twig']->render('volunteerProfileEdit.twig', array(
+     'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'warning' => $warning,'bio' =>$bio, 'photopath'=> $photopath
+   ));
+
+ //}
+/*
+ else { # table not exixt, create volunteerUsersInfo_table
+   $st2 = $app['pdo']->prepare('CREATE volunteerUsersInfo_table (username VARCHAR(60), name VARCHAR(60),location VARCHAR(60), avaliabletime VARCHAR(60) ');
+   $st2->execute();
+
+   $st3 = $app['pdo']->prepare("INSERT into volunteerUsersInfo_table  (username, name ,location, avaliabletime) values ('$username','$name','$location','$avaliabletime')");
+   $st3->execute();
+
+
+  return $app['twig']->render('volunteerProfileEdit.html', array(
+  'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime
+));
+}
+*/
+
+});
+##################################################################################
+$app->post('/helpSeekerProfileEdit', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  $warning = "";
+  $username = $_POST["username"];
+  $name = $_POST["name"];
+  $email = $_POST["email"];
+  $location = $_POST["location"];
+  $avaliabletime = $_POST["avaliabletime"];
+  $bio = $_POST["bio"];
+  $photopath =$_POST["photopath"];
+
+
+if ($_FILES['fileToUpload'] !== null){
+  // include ImageManipulator class
+  require_once('ImageManipulator.php');
+
+  if ($_FILES['fileToUpload']['error'] > 0) {
+      //echo "Error: " . $_FILES['fileToUpload']['error'] . "<br />";
+      $warning = "No pictures.";
+  } else {
+      // array of valid extensions
+      $validExtensions = array('.jpg', '.jpeg', '.gif', '.png');
+      // get extension of the uploaded file
+      $fileExtension = strrchr($_FILES['fileToUpload']['name'], ".");
+      // check if file Extension is on the list of allowed ones
+      if (in_array($fileExtension, $validExtensions)) {
+          $newNamePrefix = time() . '_';
+          $manipulator = new ImageManipulator($_FILES['fileToUpload']['tmp_name']);
+        //  $width  = $manipulator->getWidth();
+        //  $height = $manipulator->getHeight();
+        //  $centreX = round($width / 2);
+        //  $centreY = round($height / 2);
+          // our dimensions will be 200x130
+        //  $x1 = $centreX - 100; // 200 / 2
+        //  $y1 = $centreY - 65; // 130 / 2
+
+        //  $x2 = $centreX + 100; // 200 / 2
+        //  $y2 = $centreY + 65; // 130 / 2
+
+          // center cropping to 200x130
+          //$newImage = $manipulator->crop($x1, $y1, $x2, $y2);
+          // saving file to uploads folder
+          $photopath ='uploads/'. $newNamePrefix . $_FILES['fileToUpload']['name'];
+          $manipulator->save($photopath);
+          //echo 'Done ...';
+      }
+      else {
+          //echo 'You must upload an image...';
+          $warning = "No pictures.";
+      }
+  }
+}
+
+
+/*
+$st = $app['pdo']->prepare('SELECT * FROM volunteerUsersInfo_table');
+$st->execute();
+$names = array();
+while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+  $app['monolog']->addDebug('Row ' . $row);
+  $names[] = $row;
+}
+#return $app['twig']->render('show.html', array(
+#  'name' => $names
+#));
+*/
+//if (count($names)>0){ # table exixts
+  #foreach ($names as $name) { #loop through all the username in database
+  $st = $app['pdo']->prepare("SELECT name , location, avaliabletime, bio , photopath FROM helpSeekerUsersInfo_table WHERE username = '$username'");
+  $st->execute();
+  $row = $st->fetch(PDO::FETCH_ASSOC);
+  if (row["name"]!=$name || row ["location"] != $location || row["avaliabletime"]!=$avaliabletime || row["bio"] != $bio || row["photopath"] != $photopath){
+    $st1 = $app['pdo']->prepare(" UPDATE helpSeekerUsersInfo_table set name = '$name' , location ='$location' , avaliabletime ='$avaliabletime', bio = '$bio', photopath = '$photopath' WHERE username = '$username' ");
+    $st1->execute();
+     }
+
+     return $app['twig']->render('helpSeekerProfileEdit.twig', array(
      'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'warning' => $warning,'bio' =>$bio, 'photopath'=> $photopath
    ));
 
@@ -553,6 +677,14 @@ $app->post('/helpSeekerLoginCheck', function() use($app) {
 
   $username=$_POST["username2"];
   $password=$_POST["password2"];
+
+  $name = "Add you name";
+  $location = "Add your location";
+  $avaliabletime ="Add your avaliable time";;
+  $bio = "Add your bio";
+  $photopath ="";
+  $joindate = date("Y-m-d");
+
   $st = $app['pdo']->prepare('SELECT * FROM UserForAssistance_table');
   $st->execute();
 
@@ -580,8 +712,61 @@ $app->post('/helpSeekerLoginCheck', function() use($app) {
      if ($password == "")
          $warning4 = "Password is empty.";
 
-     if ($warning3 == "UsernameCorrect" && $warning4 == "PasswordCorrect" )
-         return $app['twig']->render('user.html');
+     if ($warning3 == "UsernameCorrect" && $warning4 == "PasswordCorrect" ){
+     $st = $app['pdo']->prepare('SELECT * FROM helpSeekerUsersInfo_table');
+     $st->execute();
+     $names = array();
+     while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+       $app['monolog']->addDebug('Row ' . $row);
+       $names[] = $row;
+     }
+     #return $app['twig']->render('show.html', array(
+     #  'name' => $names
+     #));
+
+     if (count($names)>0){ # table exixts
+       #foreach ($names as $name) { #loop through all the username in database
+       $st1 = $app['pdo']->prepare("SELECT username, name , location, avaliabletime, joindate, bio, photopath FROM helpSeekerUsersInfo_table WHERE username = '$username'");
+       $st1->execute();
+       $row = $st1->fetch(PDO::FETCH_ASSOC);
+       if ($row['username'] !== null){  // check if user is the first time login user
+       //if (row["name"]!=$name || row ["location"] != $location || row["avaliabletime"]!=$avaliabletime){
+        // $st1 = $app['pdo']->prepare(" UPDATE volunteerUsersInfo_table set name = '$name' , location ='$location' , avaliabletime ='$avaliabletime' WHERE username = '$username' ");
+        // $st1->execute();
+        //  }
+          $name = $row["name"];
+          $location = $row["location"];
+          $avaliabletime = $row["avaliabletime"];
+          $joindate = $row["joindate"];
+          $bio =$row['bio'];
+          $photopath =$row['photopath'];
+          return $app['twig']->render('helpSeekerProfile.twig', array(
+          'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' =>$joindate,'bio' =>$bio, 'photopath'=> $photopath
+        ));
+        }
+          $st3 = $app['pdo']->prepare("INSERT into helpSeekerUsersInfo_table  (username, name ,location, avaliabletime, joindate, bio, photopath ) values ('$username','$name','$location','$avaliabletime','$joindate','$bio', '$photopath')");
+          $st3->execute();
+          return $app['twig']->render('helpSeekerProfile.twig', array(
+          'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' =>$joindate,'bio' =>$bio, 'photopath'=> $photopath
+        ));
+
+      }
+
+      else { # table not exixt, create volunteerUsersInfo_table
+        $st2 = $app['pdo']->prepare('CREATE table helpSeekerUsersInfo_table (username VARCHAR(60), name VARCHAR(60),location VARCHAR(60), avaliabletime VARCHAR(60), joindate VARCHAR(60),bio VARCHAR(120), photopath VARCHAR(120)) ');
+        $st2->execute();
+
+        $st3 = $app['pdo']->prepare("INSERT into helpSeekerUsersInfo_table  (username, name ,location, avaliabletime, joindate, bio, photopath ) values ('$username','$name','$location','$avaliabletime','$joindate','$bio', '$photopath')");
+        $st3->execute();
+
+       return $app['twig']->render('helpSeekerProfile.twig', array(
+       'username'=>$username,'name' => $name, 'location' =>$location, 'avaliabletime' =>$avaliabletime, 'joindate' => $joindate,'bio' =>$bio, 'photopath'=> $photopath
+     ));
+}
+
+
+}
+
 
 
      return $app['twig']->render('login.html', array(
