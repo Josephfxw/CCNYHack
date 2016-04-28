@@ -122,7 +122,7 @@ $app->post('/volunteerUserSignUpCheck', function() use($app) {
     $st1 = $app['pdo']->prepare("INSERT into volunteerUsers_table ( name , email, password) values ('$username','$email','$password1')");
     $st1->execute();
 
-    return $app['twig']->render('success.html', array(
+    return $app['twig']->render('successVolunteerSignUp.html', array(
       'name' => $username, 'password' => $password1
     ));
 
@@ -232,7 +232,7 @@ $app->post('/helpSeekerSignUpCheck', function() use($app) {
     $st1 = $app['pdo']->prepare("INSERT into UserForAssistance_table ( name , email, password) values ('$username','$email','$password3')");
     $st1->execute();
 
-    return $app['twig']->render('success.html', array(
+    return $app['twig']->render('successHelpSeekerSignup.html', array(
       'name' => $username, 'password' => $password1
     ));
 
