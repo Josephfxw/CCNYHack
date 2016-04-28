@@ -233,7 +233,7 @@ $app->post('/helpSeekerSignUpCheck', function() use($app) {
     $st1->execute();
 
     return $app['twig']->render('successHelpSeekerSignUp.html', array(
-      'name' => $username, 'password' => $password1
+      'name' => $username, 'password' => $password3
     ));
 
    }
@@ -267,7 +267,7 @@ $app->post('/helpSeekerSignUpCheck', function() use($app) {
      $st3->execute();
 
      return $app['twig']->render('successHelpSeekerSignUp.html', array(
-       'name' => $username, 'password' => $password1
+       'name' => $username, 'password' => $password3
      ));
    }
 
