@@ -1,5 +1,5 @@
 # CCNYHack
-CONTRIBUTORS:
+CONTRIBUTORS:<br>
 Xuewei Fan email: Josephxwf@gmail.com <br>
 Irina email:IrinaKalashnikova@gmail.com <br>
 Jonathan email:j.mastermind1010@gmail.com <br>
