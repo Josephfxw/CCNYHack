@@ -1,10 +1,10 @@
 # CCNYHack
 CONTRIBUTORS:
-Xue Wei Fan email: Josephxwf@gmail.com
-Irina email:IrinaKalashnikova@gmail.com
-Jonathan email:j.mastermind1010@gmail.com
-Maidi email: maididai@gmail.com
-Eshawn: eshawn.karim@gmail.com
+Xuewei Fan email: Josephxwf@gmail.com <br>
+Irina email:IrinaKalashnikova@gmail.com <br>
+Jonathan email:j.mastermind1010@gmail.com <br>
+Maidi email: maididai@gmail.com <br>
+Eshawn: eshawn.karim@gmail.com <br>
 
 
 
